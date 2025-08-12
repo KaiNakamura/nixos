@@ -103,7 +103,10 @@
     wget
     git
     gh
+    zsh
+    oh-my-zsh
     kitty
+    starship
     zoxide
   ];
 
