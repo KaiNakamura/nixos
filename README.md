@@ -23,4 +23,7 @@ To rebuild and activate with flakes
 
 ```sh
 sudo nixos-rebuild switch --flake /etc/nixos#default
-```
+``` 
+
+# NOTE: Flake builds only see committed files
+# Uncommitted changes are ignored unless you use `--impure`
