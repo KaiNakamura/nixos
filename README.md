@@ -10,3 +10,17 @@ Clone this repo, then create a symlink inside `/etc/nixos`
 sudo rm -rf /etc/nixos
 sudo ln -s ~/repos/nixos /etc/nixos
 ```
+
+## NixOS Cheat Sheet
+
+To rebuild and activate the new generation immediately
+
+```sh
+sudo nixos-rebuild switch
+```
+
+To rebuild and activate with flakes
+
+```sh
+sudo nixos-rebuild switch --flake /etc/nixos#default
+```
