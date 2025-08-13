@@ -19,13 +19,6 @@
         "HYPRCURSOR_SIZE,24"
       ];
 
-      # Autostart
-      exec-once = [
-        # Add any autostart programs here
-        # "waybar"
-        # "hyprpaper"
-      ];
-
       # General settings
       general = {
         gaps_in = 5;
@@ -41,7 +34,6 @@
       # Decoration
       decoration = {
         rounding = 10;
-        rounding_power = 2;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
         
@@ -171,13 +163,13 @@
         "$mainMod, k, movefocus, u"
         "$mainMod, j, movefocus, d"
 
-        # Window movement
+        # Move windows
         "$mainMod SHIFT, h, movewindow, l"
         "$mainMod SHIFT, l, movewindow, r"
         "$mainMod SHIFT, k, movewindow, u"
         "$mainMod SHIFT, j, movewindow, d"
 
-        # Workspaces
+        # Switch workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -189,7 +181,7 @@
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
 
-        # Move to workspace
+        # Move active window to workspace
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -201,15 +193,21 @@
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        # Workspace navigation
+        # Switch to previous/next workspace
         "$mainMod CTRL, h, workspace, e-1"
         "$mainMod CTRL, l, workspace, e+1"
+
+        # Move window to previous/next workspace
         "$mainMod CTRL SHIFT, h, movetoworkspace, e-1"
         "$mainMod CTRL SHIFT, l, movetoworkspace, e+1"
 
         # Special workspace (scratchpad)
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
+
+        # Scroll bindings
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
 
         # Disable middle mouse paste
         ", mouse:274, exec, ;"
@@ -219,12 +217,6 @@
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
-      ];
-
-      # Scroll bindings
-      bind = [
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
       ];
 
       # Media keys
