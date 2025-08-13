@@ -1,4 +1,4 @@
-{ self, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.username = "kai";
@@ -18,8 +18,8 @@
   ];
 
   imports = [
-    (self + /modules/vim/vim.nix)
-    (self + /modules/vscode/vscode.nix)
+    ../../modules/vim/vim.nix
+    ../../modules/vscode/vscode.nix
   ];
 
   # Let Home Manager install and manage itself.

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -93,7 +93,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs self; };
+    extraSpecialArgs = { inherit inputs; };
     users = {
       "kai" = import ./home.nix;
     };
