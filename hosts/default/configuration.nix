@@ -101,6 +101,9 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  
+  # Enable zsh system-wide
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
