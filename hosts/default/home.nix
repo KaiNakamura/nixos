@@ -18,8 +18,12 @@
   ];
 
   imports = [
+    ../../modules/kitty/kitty.nix
+    ../../modules/starship/starship.nix
     ../../modules/vim/vim.nix
     ../../modules/vscode/vscode.nix
+    ../../modules/zoxide/zoxide.nix
+    ../../modules/zsh/zsh.nix
   ];
 
   # Let Home Manager install and manage itself.
