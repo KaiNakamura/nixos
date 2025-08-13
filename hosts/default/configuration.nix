@@ -1,14 +1,5 @@
 # Edit this configuration file to define what should be installed on
-# your system.  # Define a user account. Don't forget to set a password with 'passwd'.
-  users.users.kai = {
-    isNormalUser = true;
-    description = "Kai Nakamura";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-      # Remove KDE packages since we're using Hyprland
-    ];
-  };available in the configuration.nix(5) man page
+# your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
