@@ -108,16 +108,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    neovim
     wget
     git
-    gh
-    zsh
-    oh-my-zsh
-    kitty
-    starship
-    zoxide
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

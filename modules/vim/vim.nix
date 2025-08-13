@@ -1,6 +1,8 @@
 { ... }:
 
 {
-  home.file.".vimrc".source = ./.vimrc;
-  programs.vim.enable = true;
+  programs.vim = {
+    enable = true;
+    extraConfig = builtins.readFile ./.vimrc;
+  };
 }

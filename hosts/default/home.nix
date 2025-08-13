@@ -7,6 +7,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # User packages
+  home.packages = with pkgs; [
+    gh
+    zsh
+    oh-my-zsh
+    kitty
+    starship
+    zoxide
+  ];
+
   imports = [
     (self + /modules/vim/vim.nix)
     (self + /modules/vscode/vscode.nix)
