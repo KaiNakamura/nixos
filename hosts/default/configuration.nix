@@ -106,6 +106,10 @@
   # Enable zsh system-wide
   programs.zsh.enable = true;
   
+  # Make zsh a valid login shell and the default for users
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
+  
   # Enable Hyprland
   programs.hyprland.enable = true;
 
