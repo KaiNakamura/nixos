@@ -1,23 +1,27 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     
-    # Set zsh as the default shell for this user
     shellAliases = {
       cd = "z";
     };
     
-    initExtra = ''
+    initContent = ''
       # Starship
       eval "$(starship init zsh)"
       
       # zoxide
       eval "$(zoxide init zsh)"
     '';
+  };
+  
+  # Set zsh as the default shell for this user
+  home.sessionVariables = {
+    SHELL = "${pkgs.zsh}/bin/zsh";
   };
 }
