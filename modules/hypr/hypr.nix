@@ -247,6 +247,5 @@
     hyprpaper
     brightnessctl
     playerctl
-    wpctl
   ];
 }
