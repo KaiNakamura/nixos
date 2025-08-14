@@ -145,12 +145,13 @@
   };
 
   # Custom CSS styling
+  # TODO: Maybe change to Noto
   home.file.".config/waybar/style.css".text = ''
     * {
       border: none;
       border-radius: 0;
       min-height: 0;
-      font-family: "NotoSansM Nerd Font Mono";
+      font-family: "CaskaydiaMono Nerd Font Mono";
       font-size: 14px;
       color: #f8f8f2;
     }

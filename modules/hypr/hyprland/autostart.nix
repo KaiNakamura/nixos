@@ -15,9 +15,6 @@
       
       # Notifications
       "mako"
-      
-      # Status bar (managed by waybar module)
-      "waybar"
     ];
 
     exec = [

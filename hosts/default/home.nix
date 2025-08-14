@@ -27,6 +27,7 @@
     ../../modules/zoxide/zoxide.nix
     ../../modules/waybar/waybar.nix
     ../../modules/mako/mako.nix
+    ../../modules/fonts/fonts.nix
   ];
 
   # Let Home Manager install and manage itself.
