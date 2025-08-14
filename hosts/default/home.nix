@@ -15,6 +15,11 @@
     kitty
     starship
     zoxide
+    nautilus          # File manager
+    networkmanagerapplet  # Network manager GUI
+    gnome-power-manager   # Power management
+    blueberry            # Bluetooth manager
+    bibata-cursors       # Cursor theme
   ];
 
   imports = [

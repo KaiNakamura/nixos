@@ -5,8 +5,16 @@
     enable = true;
     settings = [
       {
-        layer = "top";
-        position = "top";
+        layer = "top"          ];
+          format-full = "Charged ";
+          tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
+          tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+          on-click = "gnome-power-statistics";
+          states = {
+            warning = 20;
+            critical = 10;
+          };
+        }; position = "top";
         spacing = 0;
         height = 26;
         modules-left = [
@@ -52,6 +60,7 @@
           interval = 5;
           format = "󰍛";
           on-click = "kitty -e btop";
+          tooltip-format = "CPU Usage: {usage}%";
         };
         clock = {
           format = "{:%A %I:%M %p}";
@@ -69,7 +78,7 @@
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           nospacing = 1;
-          on-click = "kitty -e nmcli";
+          on-click = "nm-connection-editor";
         };
         battery = {
           interval = 5;

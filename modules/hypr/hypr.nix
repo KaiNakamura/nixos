@@ -18,7 +18,21 @@
     settings = {
       # Monitor configuration
       monitor = ",preferred,auto,1.25";
+      
+      # Cursor configuration
+      cursor = {
+        no_hardware_cursors = true;
+      };
     };
+  };
+
+  # Cursor theme configuration
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
   };
 
   # Install required packages

@@ -4,7 +4,8 @@
   wayland.windowManager.hyprland.settings = {
     # Programs (keeping your current definitions)
     "$terminal" = "kitty";
-    "$fileManager" = "dolphin";
+    "$fileManager" = "nautilus";
+    "$browser" = "firefox";
     "$menu" = "wofi --show drun";
     "$mainMod" = "SUPER";
 
@@ -15,6 +16,7 @@
       "$mainMod, q, killactive"
       "$mainMod, m, exit"
       "$mainMod, e, exec, $fileManager"
+      "$mainMod, f, exec, $browser"
       "$mainMod, v, togglefloating"
       "$mainMod, r, exec, $menu"
       "$mainMod, p, pseudo"
