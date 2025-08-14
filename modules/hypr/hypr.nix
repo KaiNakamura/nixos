@@ -1,35 +1,54 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./hyprland/autostart.nix
+    ./hyprland/envs.nix
+    ./hyprland/input.nix
+    ./hyprland/looknfeel.nix
+    ./hyprland/windows.nix
+    ./hyprland/keybinds.nix
+    ./hypridle.nix
+    ./hyprlock.nix
+    ./hyprpaper.nix
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      # Monitors
+      # Monitor configuration
       monitor = ",preferred,auto,1.25";
+    };
+  };
 
-      # Programs
-      "$terminal" = "kitty";
-      "$fileManager" = "dolphin";
-      "$menu" = "wofi --show drun";
-      "$mainMod" = "SUPER";
+  # Install required packages
+  home.packages = with pkgs; [
+    # Core Hyprland tools
+    hyprland
+    
+    # Launcher and file manager
+    wofi
+    
+    # Media and system control
+    brightnessctl
+    playerctl
+    
+    # Clipboard management
+    wl-clip-persist
+    clipse
+    
+    # Color temperature
+    hyprsunset
+    
+    # Additional utilities from omarchy
+    hyprshot      # Screenshots
+    hyprpicker    # Color picker
+    pamixer       # Audio mixer
+  ];
+}
 
-      # Environment variables
-      env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
       ];
-
-      # General settings
-      general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        resize_on_border = false;
-        allow_tearing = false;
-        layout = "dwindle";
-      };
+}
 
       # Decoration
       decoration = {

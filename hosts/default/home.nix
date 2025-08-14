@@ -26,6 +26,7 @@
     ../../modules/vscode/vscode.nix
     ../../modules/zoxide/zoxide.nix
     ../../modules/waybar/waybar.nix
+    ../../modules/mako/mako.nix
   ];
 
   # Let Home Manager install and manage itself.
