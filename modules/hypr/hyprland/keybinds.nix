@@ -73,9 +73,6 @@
       # Scroll bindings
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
-
-      # Disable middle mouse paste
-      ", mouse:274, exec, ;"
     ];
 
     # Mouse bindings
