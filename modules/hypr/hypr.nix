@@ -117,6 +117,11 @@
         disable_hyprland_logo = true;
       };
 
+      # Autostart applications
+      exec-once = [
+        "waybar"
+      ];
+
       # Input
       input = {
         kb_layout = "us";
@@ -243,7 +248,6 @@
   home.packages = with pkgs; [
     hyprland
     wofi
-    waybar
     hyprpaper
     brightnessctl
     playerctl
