@@ -5,19 +5,25 @@
     enable = true;
     settings = [
       {
-        layer = "top"          ];
-          format-full = "Charged ";
-          tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
-          tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
-          on-click = "gnome-power-statistics";
-          states = {
-            warning = 20;
-            critical = 10;
-          };
-        }; position = "top";
+        layer = "top";
+        position = "top";
         spacing = 0;
         height = 26;
         modules-left = [
+          "hyprland/workspaces"
+        ];
+        modules-center = [
+          "clock"
+        ];
+        modules-right = [
+          "tray"
+          "bluetooth"
+          "network"
+          "wireplumber"
+          "cpu"
+          "power-profiles-daemon"
+          "battery"
+        ];
           "hyprland/workspaces"
         ];
         modules-center = [
@@ -115,6 +121,7 @@
           format-full = "Charged ";
           tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
           tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+          on-click = "gnome-power-manager";
           states = {
             warning = 20;
             critical = 10;
