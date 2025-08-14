@@ -24,20 +24,6 @@
           "power-profiles-daemon"
           "battery"
         ];
-          "hyprland/workspaces"
-        ];
-        modules-center = [
-          "clock"
-        ];
-        modules-right = [
-          "tray"
-          "bluetooth"
-          "network"
-          "wireplumber"
-          "cpu"
-          "power-profiles-daemon"
-          "battery"
-        ];
         "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";
