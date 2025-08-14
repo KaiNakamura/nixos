@@ -59,12 +59,12 @@
       "$mainMod SHIFT, 0, movetoworkspace, 10"
 
       # Switch to previous/next workspace
-      "$mainMod CTRL, h, workspace, e-1"
-      "$mainMod CTRL, l, workspace, e+1"
+      "$mainMod CTRL, h, workspace, r-1"
+      "$mainMod CTRL, l, workspace, r+1"
 
       # Move window to previous/next workspace
-      "$mainMod CTRL SHIFT, h, movetoworkspace, e-1"
-      "$mainMod CTRL SHIFT, l, movetoworkspace, e+1"
+      "$mainMod CTRL SHIFT, h, movetoworkspace, r-1"
+      "$mainMod CTRL SHIFT, l, movetoworkspace, r+1"
 
       # Special workspace (scratchpad)
       "$mainMod, S, togglespecialworkspace, magic"
