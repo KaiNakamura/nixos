@@ -13,6 +13,7 @@
     nautilus # File manager
     networkmanagerapplet # Network manager GUI
     gnome-power-manager # Power management
+    gowall
   ];
 
   home.sessionVariables = {
