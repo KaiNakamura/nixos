@@ -52,6 +52,7 @@
           interval = 5;
           format = "󰍛";
           on-click = "kitty -e btop";
+          tooltip-format = "CPU Usage: {usage}%";
         };
         clock = {
           format = "{:%A %I:%M %p}";
@@ -69,7 +70,7 @@
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           nospacing = 1;
-          on-click = "kitty -e nmcli";
+          on-click = "nm-connection-editor";
         };
         battery = {
           interval = 5;
@@ -106,6 +107,7 @@
           format-full = "Charged ";
           tooltip-format-discharging = "{power:>1.0f}W↓ {capacity}%";
           tooltip-format-charging = "{power:>1.0f}W↑ {capacity}%";
+          on-click = "gnome-power-manager";
           states = {
             warning = 20;
             critical = 10;
@@ -145,12 +147,13 @@
   };
 
   # Custom CSS styling
+  # TODO: Maybe change to Noto
   home.file.".config/waybar/style.css".text = ''
     * {
       border: none;
       border-radius: 0;
       min-height: 0;
-      font-family: "NotoSansM Nerd Font Mono";
+      font-family: "CaskaydiaMono Nerd Font Mono";
       font-size: 14px;
       color: #f8f8f2;
     }
