@@ -8,7 +8,6 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
       plugins = [ "git" ];
     };
     
@@ -31,7 +30,7 @@
       ns = "sudo nixos-rebuild switch --flake $NIXOS_FLAKE";
     };
     
-    initContent = ''
+    initExtra = ''
       # Keybindings
       bindkey '^R' history-incremental-search-backward
     '';

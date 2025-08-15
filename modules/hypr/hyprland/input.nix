@@ -26,7 +26,8 @@
     };
 
     # Device-specific configuration
-    "device:logitech-m705" = {
+    device = {
+      name = "logitech-m705";
       sensitivity = -0.5;
     };
   };
