@@ -10,13 +10,14 @@
   # User packages
   home.packages = with pkgs; [
     gh
-    zsh
-    oh-my-zsh
-    kitty
-    starship
-    zoxide
-    gowall
+    nautilus # File manager
+    networkmanagerapplet # Network manager GUI
+    gnome-power-manager # Power management
   ];
+
+  home.sessionVariables = {
+    NIXOS_FLAKE = "/etc/nixos#default";
+  };
 
   imports = [
     ../../modules/vim/vim.nix
@@ -27,6 +28,8 @@
     ../../modules/vscode/vscode.nix
     ../../modules/zoxide/zoxide.nix
     ../../modules/waybar/waybar.nix
+    ../../modules/mako/mako.nix
+    ../../modules/fonts/fonts.nix
   ];
 
   # Let Home Manager install and manage itself.

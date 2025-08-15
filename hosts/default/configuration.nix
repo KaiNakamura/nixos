@@ -87,10 +87,6 @@
     isNormalUser = true;
     description = "Kai Nakamura";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
   };
 
   home-manager = {
@@ -98,6 +94,7 @@
     users = {
       "kai" = import ./home.nix;
     };
+    backupFileExtension = "backup";
   };
 
   # Install firefox.
@@ -116,11 +113,21 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Install fonts
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    nerd-fonts.caskaydia-mono
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
     git
+    networkmanagerapplet
+    gnome-power-manager
+    home-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
