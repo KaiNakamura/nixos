@@ -15,6 +15,7 @@
     kitty
     starship
     zoxide
+    gowall
   ];
 
   imports = [
