@@ -35,6 +35,18 @@
     ../../modules/fonts/fonts.nix
   ];
 
+  # Firefox: disable middle-click paste & primary selection autocopy
+  programs.firefox = {
+    enable = true; # profile-level settings
+    profiles.default = {
+      id = 0;
+      settings = {
+        "middlemouse.paste" = false;
+        "clipboard.autocopy" = false;
+      };
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

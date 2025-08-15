@@ -8,10 +8,30 @@
     syntaxHighlighting.enable = true;
     
     shellAliases = {
+      # Git
+      gs = "git status";
+      ga = "git add";
+      gm = "git commit -m";
+      gma = "git commit -ma";
+      gb = "git branch";
+      gp = "git push";
+      gc = "git checkout";
+      gl = "git log";
+      
+      # Zoxide
       cd = "z";
+
+      # NixOS
+      ns = "sudo nixos-rebuild switch --flake $NIXOS_FLAKE";
     };
     
     initContent = ''
+      # Environment variables
+      export NIXOS_FLAKE="/etc/nixos#default"
+
+      # Keybindings
+      bindkey '^R' history-incremental-search-backward
+
       # Starship
       eval "$(starship init zsh)"
       

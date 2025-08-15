@@ -17,11 +17,16 @@
     enable = true;
     settings = {
       # Monitor configuration
-      monitor = ",preferred,auto,1.25";
+      monitor = ",preferred,auto,1";
       
       # Cursor configuration
       cursor = {
         no_hardware_cursors = true;
+      };
+
+      # Disable middle-click paste
+      misc = {
+        middle_click_paste = false;
       };
     };
   };

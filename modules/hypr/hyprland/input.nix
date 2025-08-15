@@ -5,13 +5,12 @@
     # Input configuration
     input = {
       kb_layout = "us";
-      kb_options = "compose:caps";  # Use Caps Lock as compose key
 
       follow_mouse = 1;
-      sensitivity = 0;  # No mouse acceleration
+      sensitivity = 0;  # base pointer scaling
       
       touchpad = {
-        natural_scroll = true;  # Keep your preference for natural scroll
+        natural_scroll = true;
       };
     };
 
@@ -26,9 +25,8 @@
       workspace_swipe = false;
     };
 
-    # Device-specific configurations can be added here
-    device = {
-      name = "epic-mouse-v1";
+    # Device-specific configuration
+    "device:logitech-m705" = {
       sensitivity = -0.5;
     };
   };

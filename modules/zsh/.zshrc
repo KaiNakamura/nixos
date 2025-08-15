@@ -1,3 +1,4 @@
+# TODO: This file here for reference, use `zsh.nix` instead
 plugins=(
 	git
 )
