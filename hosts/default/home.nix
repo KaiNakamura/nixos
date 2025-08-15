@@ -13,7 +13,6 @@
     nautilus # File manager
     networkmanagerapplet # Network manager GUI
     gnome-power-manager # Power management
-    gowall
   ];
 
   home.sessionVariables = {
@@ -31,6 +30,7 @@
     ../../modules/waybar/waybar.nix
     ../../modules/mako/mako.nix
     ../../modules/fonts/fonts.nix
+    ../../modules/gowall/gowall.nix
   ];
 
   # Let Home Manager install and manage itself.
