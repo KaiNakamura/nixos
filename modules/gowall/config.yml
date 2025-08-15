@@ -1,5 +1,5 @@
 themes:
-  - name: "monokai"
+  - name: "monokai-custom"
     colors:
       - "#1E1F1C"
       - "#272822"
