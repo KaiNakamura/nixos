@@ -98,6 +98,7 @@
     users = {
       "kai" = import ./home.nix;
     };
+    backupFileExtension = "backup";
   };
 
   # Install firefox.
@@ -128,6 +129,8 @@
   environment.systemPackages = with pkgs; [
     wget
     git
+    networkmanagerapplet
+    gnome-power-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

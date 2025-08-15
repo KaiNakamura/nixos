@@ -6,6 +6,11 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [ "git" ];
+    };
     
     shellAliases = {
       # Git
@@ -27,17 +32,8 @@
     };
     
     initContent = ''
-      # Environment variables
-      export NIXOS_FLAKE="/etc/nixos#default"
-
       # Keybindings
       bindkey '^R' history-incremental-search-backward
-
-      # Starship
-      eval "$(starship init zsh)"
-      
-      # zoxide
-      eval "$(zoxide init zsh)"
     '';
   };
 }

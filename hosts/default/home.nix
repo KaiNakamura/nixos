@@ -10,17 +10,14 @@
   # User packages
   home.packages = with pkgs; [
     gh
-    zsh
-    oh-my-zsh
-    kitty
-    starship
-    zoxide
-    nautilus          # File manager
-    networkmanagerapplet  # Network manager GUI
-    gnome-power-manager   # Power management
-    blueberry            # Bluetooth manager
-    bibata-cursors       # Cursor theme
+    nautilus # File manager
+    networkmanagerapplet # Network manager GUI
+    gnome-power-manager # Power management
   ];
+
+  home.sessionVariables = {
+    NIXOS_FLAKE = "/etc/nixos#default";
+  };
 
   imports = [
     ../../modules/vim/vim.nix
@@ -34,18 +31,6 @@
     ../../modules/mako/mako.nix
     ../../modules/fonts/fonts.nix
   ];
-
-  # Firefox: disable middle-click paste & primary selection autocopy
-  programs.firefox = {
-    enable = true; # profile-level settings
-    profiles.default = {
-      id = 0;
-      settings = {
-        "middlemouse.paste" = false;
-        "clipboard.autocopy" = false;
-      };
-    };
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
