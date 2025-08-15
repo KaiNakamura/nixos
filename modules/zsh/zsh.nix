@@ -30,7 +30,7 @@
       ns = "sudo nixos-rebuild switch --flake $NIXOS_FLAKE";
     };
     
-    initExtra = ''
+    initContent = ''
       # Keybindings
       bindkey '^R' history-incremental-search-backward
     '';
