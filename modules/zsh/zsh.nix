@@ -15,6 +15,7 @@
       gma = "git commit -ma";
       gb = "git branch";
       gp = "git push";
+      gpo = "git push origin";
       gc = "git checkout";
       gl = "git log";
       
