@@ -87,10 +87,6 @@
     isNormalUser = true;
     description = "Kai Nakamura";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
   };
 
   home-manager = {
@@ -131,6 +127,7 @@
     git
     networkmanagerapplet
     gnome-power-manager
+    home-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
