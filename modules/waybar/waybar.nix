@@ -155,12 +155,12 @@
       min-height: 0;
       font-family: "CaskaydiaMono Nerd Font Mono";
       font-size: 14px;
-      color: ${config.colorScheme.colors.white};
+      color: ${config.colorScheme.palette.white};
     }
 
     window#waybar {
       background-color: ${config.colorSceheme.colors.gray2}
-      border-bottom: 2px solid ${config.colorScheme.colors.gray1};
+      border-bottom: 2px solid ${config.colorScheme.palette.gray1};
     }
 
     #workspaces {
@@ -171,17 +171,17 @@
       all: initial;
       padding: 2px 6px;
       margin-right: 3px;
-      color: ${config.colorScheme.colors.gray1};
+      color: ${config.colorScheme.palette.gray1};
     }
 
     #workspaces button.active {
-      color: ${config.colorScheme.colors.white};
-      background-color: ${config.colorScheme.colors.gray1};
+      color: ${config.colorScheme.palette.white};
+      background-color: ${config.colorScheme.palette.gray1};
     }
 
     #workspaces button:hover {
-      color: ${config.colorScheme.colors.white};
-      background-color: ${config.colorScheme.colors.gray2};
+      color: ${config.colorScheme.palette.white};
+      background-color: ${config.colorScheme.palette.gray2};
     }
 
     #cpu,
@@ -202,22 +202,22 @@
     }
 
     #battery.warning {
-      color: ${config.colorScheme.colors.orange};
+      color: ${config.colorScheme.palette.orange};
     }
 
     #battery.critical {
-      color: ${config.colorScheme.colors.red};
+      color: ${config.colorScheme.palette.red};
     }
 
     tooltip {
       padding: 2px;
-      background-color: ${config.colorScheme.colors.gray3};
-      border: 1px solid ${config.colorScheme.colors.gray1};
+      background-color: ${config.colorScheme.palette.gray3};
+      border: 1px solid ${config.colorScheme.palette.gray1};
     }
 
     tooltip label {
       padding: 2px;
-      color: ${config.colorScheme.colors.white};
+      color: ${config.colorScheme.palette.white};
     }
   '';
 

@@ -14,36 +14,36 @@
       enable_audio_bell = "no";
       
       # Monokai theme
-      background = config.colorScheme.colors.gray3;
-      foreground = config.colorScheme.colors.white;
-      cursor = config.colorScheme.colors.white;
-      selection_background = config.colorScheme.colors.white;
-      selection_foreground = config.colorScheme.colors.gray3;
-      active_tab_background = config.colorScheme.colors.gray1;
-      active_tab_foreground = config.colorScheme.colors.gray3;
-      active_border_color = config.colorScheme.colors.gray1;
-      inactive_tab_background = config.colorScheme.colors.gray3;
-      inactive_tab_foreground = config.colorScheme.colors.gray1;
-      inactive_border_color = config.colorScheme.colors.gray1;
-      url_color = config.colorScheme.colors.white;
+      background = config.colorScheme.palette.gray3;
+      foreground = config.colorScheme.palette.white;
+      cursor = config.colorScheme.palette.white;
+      selection_background = config.colorScheme.palette.white;
+      selection_foreground = config.colorScheme.palette.gray3;
+      active_tab_background = config.colorScheme.palette.gray1;
+      active_tab_foreground = config.colorScheme.palette.gray3;
+      active_border_color = config.colorScheme.palette.gray1;
+      inactive_tab_background = config.colorScheme.palette.gray3;
+      inactive_tab_foreground = config.colorScheme.palette.gray1;
+      inactive_border_color = config.colorScheme.palette.gray1;
+      url_color = config.colorScheme.palette.white;
       
       # 16 Color Space
-      color0 = config.colorScheme.colors.gray3;
-      color8 = config.colorScheme.colors.gray1;
-      color1 = config.colorScheme.colors.red;
-      color9 = config.colorScheme.colors.red;
-      color2 = config.colorScheme.colors.green;
-      color10 = config.colorScheme.colors.green;
-      color3 = config.colorScheme.colors.yellow;
-      color11 = config.colorScheme.colors.yellow;
-      color4 = config.colorScheme.colors.cyan;
-      color12 = config.colorScheme.colors.cyan;
-      color5 = config.colorScheme.colors.orange;
-      color13 = config.colorScheme.colors.orange;
-      color6 = config.colorScheme.colors.purple;
-      color14 = config.colorScheme.colors.purple;
-      color7 = config.colorScheme.colors.white;
-      color15 = config.colorScheme.colors.white;
+      color0 = config.colorScheme.palette.gray3;
+      color8 = config.colorScheme.palette.gray1;
+      color1 = config.colorScheme.palette.red;
+      color9 = config.colorScheme.palette.red;
+      color2 = config.colorScheme.palette.green;
+      color10 = config.colorScheme.palette.green;
+      color3 = config.colorScheme.palette.yellow;
+      color11 = config.colorScheme.palette.yellow;
+      color4 = config.colorScheme.palette.cyan;
+      color12 = config.colorScheme.palette.cyan;
+      color5 = config.colorScheme.palette.orange;
+      color13 = config.colorScheme.palette.orange;
+      color6 = config.colorScheme.palette.purple;
+      color14 = config.colorScheme.palette.purple;
+      color7 = config.colorScheme.palette.white;
+      color15 = config.colorScheme.palette.white;
       
       # Behavior
       enabled_layouts = "splits";
