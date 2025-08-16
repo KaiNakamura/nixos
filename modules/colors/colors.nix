@@ -1,6 +1,6 @@
-{ config, nix-colors, ... }: {
+{ inputs, ... }: {
   imports = [
-    nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
   ];
 
   colorScheme = {
