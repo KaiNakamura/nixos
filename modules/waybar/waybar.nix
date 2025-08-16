@@ -159,7 +159,7 @@
     }
 
     window#waybar {
-      background-color: ${config.colorSceheme.colors.gray2}
+      background-color: ${config.colorScheme.palette.gray2}
       border-bottom: 2px solid ${config.colorScheme.palette.gray1};
     }
 
