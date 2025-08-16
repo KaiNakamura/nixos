@@ -20,6 +20,7 @@
   };
 
   imports = [
+    ../../modules/colors/colors.nix
     ../../modules/vim/vim.nix
     ../../modules/zsh/zsh.nix
     ../../modules/hypr/hypr.nix

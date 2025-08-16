@@ -8,11 +8,13 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs nix-colors; };
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default

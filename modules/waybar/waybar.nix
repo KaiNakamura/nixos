@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.waybar = {
@@ -155,12 +155,12 @@
       min-height: 0;
       font-family: "CaskaydiaMono Nerd Font Mono";
       font-size: 14px;
-      color: #f8f8f2;
+      color: ${config.colorScheme.colors.white};
     }
 
     window#waybar {
-      background-color: rgba(39, 40, 34, 0.9);
-      border-bottom: 2px solid #75715e;
+      background-color: ${config.colorSceheme.colors.gray2}
+      border-bottom: 2px solid ${config.colorScheme.colors.gray1};
     }
 
     #workspaces {
@@ -171,17 +171,17 @@
       all: initial;
       padding: 2px 6px;
       margin-right: 3px;
-      color: #75715e;
+      color: ${config.colorScheme.colors.gray1};
     }
 
     #workspaces button.active {
-      color: #f8f8f2;
-      background-color: #75715e;
+      color: ${config.colorScheme.colors.white};
+      background-color: ${config.colorScheme.colors.gray1};
     }
 
     #workspaces button:hover {
-      color: #f8f8f2;
-      background-color: rgba(117, 113, 94, 0.5);
+      color: ${config.colorScheme.colors.white};
+      background-color: ${config.colorScheme.colors.gray2};
     }
 
     #cpu,
@@ -202,26 +202,25 @@
     }
 
     #battery.warning {
-      color: #f4bf75;
+      color: ${config.colorScheme.colors.orange};
     }
 
     #battery.critical {
-      color: #f92672;
+      color: ${config.colorScheme.colors.red};
     }
 
     tooltip {
       padding: 2px;
-      background-color: #272822;
-      border: 1px solid #75715e;
+      background-color: ${config.colorScheme.colors.gray3};
+      border: 1px solid ${config.colorScheme.colors.gray1};
     }
 
     tooltip label {
       padding: 2px;
-      color: #f8f8f2;
+      color: ${config.colorScheme.colors.white};
     }
   '';
 
-  # Install required packages
   home.packages = with pkgs; [
     waybar
     blueberry  # Bluetooth manager
