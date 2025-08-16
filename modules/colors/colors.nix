@@ -7,7 +7,7 @@
     slug = "monokai-kai";
     name = "Monokai Kai";
     author = "Kai Nakamura";
-    colors = {
+    palette = {
       white = "#f8f8f2";
       gray0 = "#88846f";
       gray1 = "#75715e";
