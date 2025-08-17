@@ -3,11 +3,16 @@
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
+    extraOptions = [
+      "--group-directories-first"
+      "--icons"
+    ];
   };
 
   programs.zsh.shellAliases = {
-    ls = "eza -a --icons=always";
-    ll = "eza -al --icons=always";
-    lt = "eza -a --tree --level=1 --icons=always";
+    ls = "eza";
+    la = "eza -a";
+    ll = "eza -al";
+    lt = "eza -a --tree --level=1";
   };
 }
