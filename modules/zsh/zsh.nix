@@ -28,6 +28,9 @@
 
       # NixOS
       ns = "sudo nixos-rebuild switch --flake $NIXOS_FLAKE";
+
+      # Fastfetch
+      ff = "fastfetch";
     };
     
     initContent = ''
