@@ -40,6 +40,7 @@
     ../../modules/obsidian/obsidian.nix
     ../../modules/lazydocker/lazydocker.nix
     ../../modules/wofi/wofi.nix
+    ../../modules/mpv/mpv.nix
   ];
 
   # Let Home Manager install and manage itself.
