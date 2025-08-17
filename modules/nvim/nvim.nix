@@ -6,7 +6,6 @@ let
 in {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;
     extraPackages = with pkgs; [ fd ripgrep ];
   };
 
