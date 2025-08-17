@@ -70,7 +70,7 @@
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           nospacing = 1;
-          on-click = "nm-connection-editor";
+          on-click = "nm-applet";
         };
         battery = {
           interval = 5;
@@ -223,6 +223,7 @@
 
   home.packages = with pkgs; [
     waybar
+    networkmanagerapplet  # Network manager applet (nm-applet)
     blueberry  # Bluetooth manager
     pavucontrol  # Audio control
     power-profiles-daemon  # Power management

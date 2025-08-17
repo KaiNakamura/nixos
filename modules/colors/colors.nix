@@ -4,8 +4,8 @@
   ];
 
   colorScheme = {
-    slug = "monokai-kai";
-    name = "Monokai Kai";
+    slug = "kai";
+    name = "Kai";
     author = "Kai Nakamura";
     palette = {
       white = "#f8f8f2";
