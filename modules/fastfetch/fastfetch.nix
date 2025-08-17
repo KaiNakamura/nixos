@@ -17,7 +17,7 @@ in
 {
   programs.fastfetch.enable = true;
 
-  programs.zsh.shellAliases {
+  programs.zsh.shellAliases = {
     ff = "fastfetch";
     cff = "clean && fastfetch";
   }
