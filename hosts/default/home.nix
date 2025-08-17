@@ -34,6 +34,7 @@
     ../../modules/fonts/fonts.nix
     ../../modules/gowall/gowall.nix
     ../../modules/fastfetch/fastfetch.nix
+    ../../modules/btop/btop.nix
   ];
 
   # Let Home Manager install and manage itself.
