@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ../../modules/docker/docker.nix
     ];
 
   # Bootloader
@@ -83,7 +84,7 @@
   users.users.kai = {
     isNormalUser = true;
     description = "Kai Nakamura";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
   home-manager = {
