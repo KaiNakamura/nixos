@@ -24,6 +24,9 @@
       "$mainMod, o, togglesplit"
       "$mainMod, m, fullscreen"
 
+      # Power management
+      "$mainMod CTRL, q, exec, ~/.config/hypr/scripts/wlogout.sh"
+
       # Focus movement
       "$mainMod, h, movefocus, l"
       "$mainMod, l, movefocus, r"

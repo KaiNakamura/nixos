@@ -42,6 +42,7 @@
     ../../modules/wofi/wofi.nix
     ../../modules/mpv/mpv.nix
     ../../modules/imv/imv.nix
+    ../../modules/power/power.nix
   ];
 
   # Let Home Manager install and manage itself.
