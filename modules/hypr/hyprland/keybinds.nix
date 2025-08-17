@@ -13,11 +13,13 @@
     bind = [
       # Applications
       "$mainMod, n, exec, $terminal"
-      "$mainMod, q, killactive"
       "$mainMod, e, exec, $fileManager"
       "$mainMod, f, exec, $browser"
-      "$mainMod, v, togglefloating"
       "$mainMod, r, exec, $menu"
+
+      # Window management
+      "$mainMod, q, killactive"
+      "$mainMod, v, togglefloating"
       "$mainMod, p, pseudo"
       "$mainMod, o, togglesplit"
       "$mainMod, m, fullscreen"
