@@ -2,14 +2,14 @@
 
 {
   wayland.windowManager.hyprland.settings = {
-    # Programs (keeping your current definitions)
+    # Programs
     "$terminal" = "kitty";
     "$fileManager" = "nautilus";
     "$browser" = "firefox";
     "$menu" = "wofi --show drun";
     "$mainMod" = "SUPER";
 
-    # Key bindings (preserved from your original configuration)
+    # Key bindings
     bind = [
       # Applications
       "$mainMod, n, exec, $terminal"
