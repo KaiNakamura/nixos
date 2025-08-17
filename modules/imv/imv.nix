@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  programs.mpv = {
+  programs.imv = {
     enable = true;
   };
 }

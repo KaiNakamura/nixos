@@ -54,8 +54,7 @@
           tooltip-format = "CPU Usage: {usage}%";
         };
         clock = {
-          format = "{:%A %I:%M %p}";
-          format-alt = "{:%d %B W%V %Y}";
+          format = "{:%A, %B %-d, %Y, %-I:%M %p}";
           tooltip = false;
         };
         battery = {
