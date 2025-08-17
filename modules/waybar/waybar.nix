@@ -110,13 +110,7 @@
           format = "{icon}";
           format-muted = "󰝟";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+            default = ["󰕿" "󰖀" "󰕾"];
           };
           scroll-step = 5;
           on-click = "pavucontrol";
