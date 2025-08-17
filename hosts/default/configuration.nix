@@ -83,7 +83,7 @@
   users.users.kai = {
     isNormalUser = true;
     description = "Kai Nakamura";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   home-manager = {
