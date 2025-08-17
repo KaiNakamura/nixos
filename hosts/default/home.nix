@@ -38,6 +38,7 @@
     ../../modules/eza/eza.nix
     ../../modules/git/git.nix
     ../../modules/obsidian/obsidian.nix
+    ../../modules/lazydocker/lazydocker.nix
   ];
 
   # Let Home Manager install and manage itself.
