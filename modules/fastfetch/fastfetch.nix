@@ -17,7 +17,10 @@ in
 {
   programs.fastfetch.enable = true;
 
-  programs.zsh.shellAliases.ff = "fastfetch";
+  programs.zsh.shellAliases {
+    ff = "fastfetch";
+    cff = "clean && fastfetch";
+  }
 
   home.file.".config/fastfetch/config.jsonc".text = ''
   {
