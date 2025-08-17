@@ -14,13 +14,13 @@
       # Applications
       "$mainMod, n, exec, $terminal"
       "$mainMod, q, killactive"
-      "$mainMod, m, exit"
       "$mainMod, e, exec, $fileManager"
       "$mainMod, f, exec, $browser"
       "$mainMod, v, togglefloating"
       "$mainMod, r, exec, $menu"
       "$mainMod, p, pseudo"
       "$mainMod, o, togglesplit"
+      "$mainMod, m, fullscreen"
 
       # Focus movement
       "$mainMod, h, movefocus, l"
