@@ -107,6 +107,10 @@
   # Enable Hyprland
   programs.hyprland.enable = true;
 
+  # Enable keyring services for password storage
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -122,6 +126,8 @@
     wget
     git
     networkmanagerapplet
+    gnome-keyring  # For password storage
+    libsecret      # For NetworkManager keyring integration
     gnome-power-manager
     home-manager
   ];

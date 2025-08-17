@@ -6,6 +6,9 @@
       # System services
       "systemctl --user start hyprpolkitagent"
       
+      # Keyring services for password storage
+      "/run/wrappers/bin/gnome-keyring-daemon --start --daemonize --components=gpg,pkcs11,secrets,ssh"
+      
       # Clipboard management
       "wl-clip-persist --clipboard regular"
       "clipse -listen"

@@ -29,6 +29,9 @@
       
       # GTK theme
       "GTK_THEME,Adwaita:dark"
+      
+      # Keyring for password storage
+      "SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/keyring/ssh"
     ];
 
     # XWayland settings
