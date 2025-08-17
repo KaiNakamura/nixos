@@ -35,6 +35,7 @@
     ../../modules/gowall/gowall.nix
     ../../modules/fastfetch/fastfetch.nix
     ../../modules/btop/btop.nix
+    ../../modules/eza/eza.nix
   ];
 
   # Let Home Manager install and manage itself.
