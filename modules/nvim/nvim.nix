@@ -6,7 +6,7 @@ let
 in {
   programs.neovim = {
     enable = true;
-    extraPackages = with pkgs; [ fd ripgrep ];
+    extraPackages = with pkgs; [ fd ripgrep gcc ];
   };
 
   # Clone/update the external editable repo before Home Manager links files
