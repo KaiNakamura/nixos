@@ -20,7 +20,7 @@ in
   programs.zsh.shellAliases = {
     ff = "fastfetch";
     cff = "clean && fastfetch";
-  }
+  };
 
   home.file.".config/fastfetch/config.jsonc".text = ''
   {
