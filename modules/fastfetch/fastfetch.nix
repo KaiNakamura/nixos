@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  # Convert the provided SVG logo into a PNG in the Nix store for fastfetch image logo usage
+  nixosLogoPng = pkgs.runCommand "nixos-logo-fastfetch.png" { buildInputs = [ pkgs.librsvg ]; } ''
+    rsvg-convert -w 256 -h 256 ${./logos/nixos.svg} -o $out
+  '';
+in
 {
   programs.fastfetch = {
     enable = true;
@@ -9,8 +15,9 @@
   {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-      "type": "small",
-      "padding": { "top": 1 }
+      "type": "kitty",
+      "source": "${nixosLogoPng}",
+      "height": 15
     },
     "display": {
       "separator": " "
