@@ -45,9 +45,6 @@
     # Core Hyprland tools
     hyprland
     
-    # Launcher and file manager
-    wofi
-    
     # Media and system control
     brightnessctl
     playerctl
