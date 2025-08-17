@@ -15,6 +15,9 @@
       
       # Notifications
       "mako"
+      
+      # Network manager applet
+      "nm-applet --indicator"
     ];
 
     exec = [

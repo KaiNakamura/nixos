@@ -70,7 +70,6 @@
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           nospacing = 1;
-          on-click = "nm-applet";
         };
         battery = {
           interval = 5;
@@ -218,6 +217,56 @@
     tooltip label {
       padding: 2px;
       color: #${config.colorScheme.palette.white};
+    }
+  '';
+
+  # GTK theme configuration for nm-applet to match system colors
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+    };
+    font = {
+      name = "Noto Sans";
+      size = 11;
+    };
+  };
+
+  # Custom GTK CSS for nm-applet to use your color scheme
+  home.file.".config/gtk-3.0/gtk.css".text = ''
+    /* NetworkManager applet theming */
+    .nm-applet-menu {
+      background-color: #${config.colorScheme.palette.gray3};
+      color: #${config.colorScheme.palette.white};
+      border: 1px solid #${config.colorScheme.palette.gray1};
+    }
+
+    .nm-applet-menu menuitem {
+      background-color: transparent;
+      color: #${config.colorScheme.palette.white};
+    }
+
+    .nm-applet-menu menuitem:hover {
+      background-color: #${config.colorScheme.palette.gray2};
+    }
+
+    .nm-applet-menu menuitem:selected {
+      background-color: #${config.colorScheme.palette.gray1};
+    }
+
+    /* General popover/menu styling */
+    popover, menu {
+      background-color: #${config.colorScheme.palette.gray3};
+      color: #${config.colorScheme.palette.white};
+      border: 1px solid #${config.colorScheme.palette.gray1};
+    }
+
+    popover menuitem, menu menuitem {
+      color: #${config.colorScheme.palette.white};
+    }
+
+    popover menuitem:hover, menu menuitem:hover {
+      background-color: #${config.colorScheme.palette.gray2};
     }
   '';
 
