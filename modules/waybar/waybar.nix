@@ -107,7 +107,7 @@
           on-click = "blueberry";
         };
         wireplumber = {
-          format = "";
+          format = "{icon}";
           format-muted = "󰝟";
           scroll-step = 5;
           on-click = "pavucontrol";
