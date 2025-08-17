@@ -126,8 +126,8 @@
     wget
     git
     networkmanagerapplet
-    gnome-keyring  # For password storage
-    libsecret      # For NetworkManager keyring integration
+    gnome-keyring
+    libsecret
     gnome-power-manager
     home-manager
   ];
