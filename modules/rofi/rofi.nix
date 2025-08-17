@@ -1,62 +1,62 @@
-{ config, pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
+let
+  palette = config.colorScheme.palette;
+  theme = ''
+* {
+  bg: #${palette.gray3};
+  bg-alt: #${palette.gray2};
+  fg: #${palette.white};
+  fg-alt: #${palette.gray0};
+  accent: #${palette.orange};
+  accent-alt: #${palette.yellow};
+  border: #${palette.gray1};
+  urgent: #${palette.red};
+  selected: #${palette.gray1};
+}
+
+window {
+  background-color: @bg;
+  border: 2px;
+  border-color: @border;
+  padding: 8px;
+}
+
+mainbox { padding: 0px; }
+inputbar {
+  children: [ prompt, entry ];
+  background-color: @bg-alt;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+prompt { text-color: @accent; }
+entry { placeholder: "Search"; }
+listview { columns: 1; lines: 12; scrollbar: false; }
+
+element { padding: 4px 8px; }
+element normal.normal { background-color: transparent; text-color: @fg; }
+element selected.normal { background-color: @selected; text-color: @fg; }
+element alternate.normal { background-color: transparent; }
+
+message { background-color: @bg-alt; }
+'';
+in
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland; # Wayland-friendly fork
+    package = pkgs.rofi-wayland;
+    font = "Noto Sans Mono Nerd Font 11";
     terminal = "kitty";
     extraConfig = {
-      modi = "drun,run,window,ssh";
+      modi = "drun,window,run";
       show-icons = true;
       drun-display-format = "{name}";
-      display-drun = "Apps";
-      display-run = "Run";
-      display-window = "Windows";
-      display-ssh = "SSH";
-      font = "Noto Sans Mono 12";
+      display-drun = "";
+      display-run = "";
+      display-window = "";
+      hover-select = false;
+      scroll-method = 1;
     };
-    theme = let
-      p = config.colorScheme.palette;
-    in builtins.toFile "rofi-kai-monokai.rasi" ''
-      * {
-        font: "Noto Sans Mono 12";
-        foreground: #${p.white};
-        background: #${p.gray3}F2; /* slightly transparent */
-        background-alt: #${p.gray2}F2;
-        selected: #${p.gray1}F2;
-        accent: #${p.green};
-        urgent: #${p.red};
-        active: #${p.green};
-        border-color: #${p.gray1};
-        spacing: 4px;
-      }
-
-      window {
-        transparency: "real";
-        padding: 15px;
-        border: 2px;
-        border-color: @border-color;
-        background: @background;
-      }
-
-      mainbox { spacing: 10px; }
-      inputbar {
-        children: [ prompt, entry ];
-        padding: 6px 8px;
-        background: @background-alt;
-        border: 1px solid @border-color;
-      }
-      prompt { padding: 0 6px 0 4px; background: #${p.gray1}CC; }
-      entry { placeholder: "Type to search..."; }
-
-      listview { lines: 12; columns: 1; dynamic: true; scrollbar: false; }
-      element { padding: 4px 6px; }
-      element selected { background: @selected; foreground: @foreground; }
-      element urgent { background: @urgent; foreground: #${p.gray3}; }
-      element active { background: @active; foreground: #${p.gray3}; }
-
-      message { background: @background-alt; border: 1px solid @border-color; }
-      scrollbar { handle-width: 4px; }
-    '';
+    theme = lib.mkForce (builtins.toFile "rofi-theme-kai.rasi" theme);
   };
 }
