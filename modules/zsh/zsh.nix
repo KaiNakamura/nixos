@@ -19,6 +19,11 @@
     initContent = ''
       # Keybindings
       bindkey '^R' history-incremental-search-backward
+
+      # Show system info (skip non-interactive or when NO_FASTFETCH set)
+      if [[ -t 1 && -z "$NO_FASTFETCH" ]] && command -v fastfetch >/dev/null 2>&1; then
+        fastfetch
+      fi
     '';
   };
 }
