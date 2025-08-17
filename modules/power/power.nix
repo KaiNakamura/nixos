@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   # Install required packages
@@ -71,8 +71,8 @@
   home.file.".config/hypr/scripts/wlogout.sh" = {
     text = ''
       #!/usr/bin/env bash
-      # Launch wlogout with minimal configuration
-      ${pkgs.wlogout}/bin/wlogout -b 5
+      # Launch wlogout with rofi-style layout
+      ${pkgs.wlogout}/bin/wlogout -b 5 -c 0 -r 0 -m 0 --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css
     '';
     executable = true;
   };
@@ -113,38 +113,70 @@
     '';
   };
 
-  # Minimal wlogout styling
+  # Minimal wlogout styling with your color scheme
   home.file.".config/wlogout/style.css" = {
     text = ''
       * {
           background-image: none;
           box-shadow: none;
+          text-shadow: none;
+          transition: none;
       }
 
       window {
-          background-color: rgba(0, 0, 0, 0.8);
+          background-color: rgba(30, 31, 28, 0.9); /* black with transparency */
       }
 
       button {
-          color: #ffffff;
-          background-color: rgba(40, 40, 40, 0.9);
-          border: 2px solid #555555;
-          border-radius: 8px;
-          margin: 5px;
-          font-size: 18px;
-          min-width: 120px;
-          min-height: 60px;
+          color: #${config.colorScheme.palette.white};
+          background-color: #${config.colorScheme.palette.gray3};
+          border: 2px solid #${config.colorScheme.palette.gray2};
+          border-radius: 4px;
+          margin: 4px 0px;
+          font-family: "Noto Sans Mono Nerd Font";
+          font-size: 16px;
+          font-weight: normal;
+          min-width: 200px;
+          min-height: 40px;
+          background-repeat: no-repeat;
+          background-position: left 12px center;
+          background-size: 20px;
+          padding-left: 45px;
+          text-align: left;
       }
 
       button:focus, button:active {
-          background-color: rgba(80, 80, 80, 0.9);
-          border-color: #ffffff;
+          background-color: #${config.colorScheme.palette.gray1};
+          border-color: #${config.colorScheme.palette.white};
+          color: #${config.colorScheme.palette.white};
           outline: none;
       }
 
       button:hover {
-          background-color: rgba(60, 60, 60, 0.9);
-          border-color: #cccccc;
+          background-color: #${config.colorScheme.palette.gray2};
+          border-color: #${config.colorScheme.palette.gray0};
+          color: #${config.colorScheme.palette.white};
+      }
+
+      /* Remove icons and use text only for minimal approach */
+      #lock {
+          background-image: none;
+      }
+
+      #logout {
+          background-image: none;
+      }
+
+      #suspend {
+          background-image: none;
+      }
+
+      #reboot {
+          background-image: none;
+      }
+
+      #shutdown {
+          background-image: none;
       }
     '';
   };
