@@ -39,7 +39,7 @@
     ../../modules/git/git.nix
     ../../modules/obsidian/obsidian.nix
     ../../modules/lazydocker/lazydocker.nix
-    ../../modules/rofi/rofi.nix
+    ../../modules/wofi/wofi.nix
   ];
 
   # Let Home Manager install and manage itself.
