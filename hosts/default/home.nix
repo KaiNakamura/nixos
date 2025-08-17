@@ -22,6 +22,7 @@
   imports = [
     ../../modules/colors/colors.nix
     ../../modules/vim/vim.nix
+    ../../modules/nvim/nvim.nix
     ../../modules/zsh/zsh.nix
     ../../modules/hypr/hypr.nix
     ../../modules/kitty/kitty.nix
