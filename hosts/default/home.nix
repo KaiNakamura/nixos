@@ -37,6 +37,7 @@
     ../../modules/btop/btop.nix
     ../../modules/eza/eza.nix
     ../../modules/git/git.nix
+    ../../modules/obsidian/obsidian.nix
   ];
 
   # Let Home Manager install and manage itself.
