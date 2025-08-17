@@ -4,7 +4,7 @@
     defaultFonts = {
       serif = ["Noto Serif"];
       sansSerif = ["Noto Sans"];
-      monospace = ["CaskaydiaMono Nerd Font"];
+      monospace = ["Noto Sans Mono Nerd Font"];
     };
   };
 }

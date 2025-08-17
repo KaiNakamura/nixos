@@ -153,7 +153,7 @@
       border: none;
       border-radius: 0;
       min-height: 0;
-      font-family: "CaskaydiaMono Nerd Font Mono";
+      font-family: "Noto Sans Mono Nerd Font";
       font-size: 14px;
       color: #${config.colorScheme.palette.white};
     }
