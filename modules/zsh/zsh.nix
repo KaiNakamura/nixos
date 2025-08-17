@@ -12,25 +12,8 @@
     };
     
     shellAliases = {
-      # Git
-      gs = "git status";
-      ga = "git add";
-      gm = "git commit -m";
-      gam = "git commit -am";
-      gb = "git branch";
-      gp = "git push";
-      gpo = "git push origin";
-      gc = "git checkout";
-      gl = "git log";
-      
-      # Zoxide
-      cd = "z";
-
       # NixOS
       ns = "sudo nixos-rebuild switch --flake $NIXOS_FLAKE";
-
-      # Fastfetch
-      ff = "fastfetch";
     };
     
     initContent = ''
