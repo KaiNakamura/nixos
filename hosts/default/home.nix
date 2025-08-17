@@ -32,6 +32,7 @@
     ../../modules/mako/mako.nix
     ../../modules/fonts/fonts.nix
     ../../modules/gowall/gowall.nix
+    ../../modules/fastfetch/fastfetch.nix
   ];
 
   # Let Home Manager install and manage itself.
