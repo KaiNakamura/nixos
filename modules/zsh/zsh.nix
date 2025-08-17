@@ -31,11 +31,6 @@
 
       # Fastfetch
       ff = "fastfetch";
-
-      # Eza
-      ls = "eza -a --icons=always";
-      ll = "eza -al --icons=always";
-      lt = "eza -a --tree --level=1 --icons=always";
     };
     
     initContent = ''
