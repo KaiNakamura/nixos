@@ -18,7 +18,6 @@
         modules-right = [
           "tray"
           "bluetooth"
-          "network"
           "wireplumber"
           "cpu"
           "power-profiles-daemon"
@@ -58,18 +57,6 @@
           format = "{:%A %I:%M %p}";
           format-alt = "{:%d %B W%V %Y}";
           tooltip = false;
-        };
-        network = {
-          format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
-          format = "{icon}";
-          format-wifi = "{icon}";
-          format-ethernet = "󰀂";
-          format-disconnected = "󰖪";
-          tooltip-format-wifi = "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
-          tooltip-format-ethernet = "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}";
-          tooltip-format-disconnected = "Disconnected";
-          interval = 3;
-          nospacing = 1;
         };
         battery = {
           interval = 5;
@@ -186,7 +173,6 @@
     #cpu,
     #power-profiles-daemon,
     #battery,
-    #network,
     #bluetooth,
     #wireplumber,
     #tray,
