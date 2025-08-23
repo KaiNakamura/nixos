@@ -14,7 +14,7 @@
     gs = "git status";
     ga = "git add";
     gm = "git commit -m";
-    gam = "git add && git commit -m";
+    gam = "git add . && git commit -m";
     gb = "git branch";
     gp = "git push";
     gpo = "git push origin";
