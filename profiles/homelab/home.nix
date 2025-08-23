@@ -12,6 +12,19 @@
     gh
   ];
 
+  imports = [
+    ../../modules/colors/colors.nix
+    ../../modules/vim/vim.nix
+    ../../modules/zsh/zsh.nix
+    ../../modules/starship/starship.nix
+    ../../modules/zoxide/zoxide.nix
+    ../../modules/fastfetch/fastfetch.nix
+    ../../modules/btop/btop.nix
+    ../../modules/eza/eza.nix
+    ../../modules/git/git.nix
+    ../../modules/lazydocker/lazydocker.nix
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

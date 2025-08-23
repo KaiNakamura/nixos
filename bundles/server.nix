@@ -2,8 +2,8 @@
 
 {
   imports = [
+    # System-level desktop modules only
     ../modules/docker/docker.nix
-    ../modules/lazydocker/lazydocker.nix
   ];
 
   # Enable SSH daemon for remote management

@@ -12,11 +12,23 @@
     };
     
     shellAliases = {
-      # Automatically uses hostname as flake target
-      ns = "sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)";
+      # Other aliases can go here
     };
     
     initContent = ''
+      # NixOS rebuild function with target argument
+      ns() {
+        if [[ $# -eq 0 ]]; then
+          echo "Usage: ns <target>"
+          return 1
+        fi
+        
+        local target="$1"
+        shift  # Remove target from arguments, pass the rest to nixos-rebuild
+        
+        sudo nixos-rebuild switch --flake "/etc/nixos#$target" "$@"
+      }
+      
       # Keybindings
       bindkey '^R' history-incremental-search-backward
     '';
