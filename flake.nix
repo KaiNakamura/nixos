@@ -12,22 +12,29 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, ... }@inputs:
+    let
+      # Helper function to create host configurations
+      mkHost = hostname: profile: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/default/configuration.nix
-          inputs.home-manager.nixosModules.default
+          ./profiles/${profile}/configuration.nix
+          ./hosts/${hostname}/hardware-configuration.nix
+          {
+            networking.hostName = hostname;  # Override placeholder
+          }
         ];
       };
-      hp-prodesk-600-g4 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/hp-prodesk-600-g4/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
+    in
+    {
+      nixosConfigurations = {
+        # Desktop machine (ThinkPad T490)
+        t490 = mkHost "t490" "desktop";
+        
+        # Homelab cluster (HP ProDesk machines)
+        homelab-00 = mkHost "homelab-00" "homelab";
+        homelab-01 = mkHost "homelab-01" "homelab";
+        homelab-02 = mkHost "homelab-02" "homelab";
       };
-    }
-  };
+    };
 }
