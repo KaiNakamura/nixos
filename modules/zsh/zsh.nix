@@ -16,15 +16,19 @@
     };
     
     initContent = ''
-      # NixOS rebuild function with target argument
+      # NixOS rebuild function with optional target argument
       ns() {
-        if [[ $# -eq 0 ]]; then
-          echo "Usage: ns <target>"
-          return 1
-        fi
+        local target
         
-        local target="$1"
-        shift  # Remove target from arguments, pass the rest to nixos-rebuild
+        if [[ $# -eq 0 ]]; then
+          # If no target specified, use hostname
+          target="$(hostname)"
+          echo "Using hostname as target: $target"
+        else
+          # Otherwise, use provided target
+          target="$1"
+          shift  # Remove target from arguments, pass the rest to nixos-rebuild
+        fi
         
         sudo nixos-rebuild switch --flake "/etc/nixos#$target" "$@"
       }
