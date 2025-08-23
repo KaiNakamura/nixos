@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../bundles/essentials.nix
+  ];
+
   home.username = "kai";
   home.homeDirectory = "/home/kai";
   home.stateVersion = "25.05";
@@ -10,19 +14,6 @@
   # Minimal packages for server management
   home.packages = with pkgs; [
     gh
-  ];
-
-  imports = [
-    ../../modules/colors/colors.nix
-    ../../modules/vim/vim.nix
-    ../../modules/zsh/zsh.nix
-    ../../modules/starship/starship.nix
-    ../../modules/zoxide/zoxide.nix
-    ../../modules/fastfetch/fastfetch.nix
-    ../../modules/btop/btop.nix
-    ../../modules/eza/eza.nix
-    ../../modules/git/git.nix
-    ../../modules/lazydocker/lazydocker.nix
   ];
 
   # Let Home Manager install and manage itself.

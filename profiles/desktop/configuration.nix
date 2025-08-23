@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../../bundles/base.nix
-    ../../bundles/desktop.nix
+    ../../base/base.nix
+    ../../base/desktop.nix
     inputs.home-manager.nixosModules.default
   ];
 

@@ -1,6 +1,6 @@
 # NixOS
 
-My NixOS configuration with modular Hyprland setup inspired by omarchy-nix.
+My NixOS configuration.
 
 ## Installation
 
