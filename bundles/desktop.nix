@@ -1,4 +1,3 @@
-# Desktop bundle - GUI and desktop environment configurations
 { config, pkgs, inputs, ... }:
 
 {
@@ -50,5 +49,23 @@
     gnome-keyring
     libsecret
     gnome-power-manager
+  ];
+
+  imports = [
+    ../modules/hypr/hypr.nix
+    ../modules/kitty/kitty.nix
+    ../modules/nvim/nvim.nix
+    ../modules/waybar/waybar.nix
+    ../modules/mako/mako.nix
+    ../modules/fonts/fonts.nix
+    ../modules/wofi/wofi.nix
+    ../modules/power/power.nix
+    ../modules/docker/docker.nix
+    ../modules/lazydocker/lazydocker.nix
+    ../modules/vscode/vscode.nix
+    ../modules/obsidian/obsidian.nix
+    ../modules/gowall/gowall.nix
+    ../modules/mpv/mpv.nix
+    ../modules/imv/imv.nix
   ];
 }

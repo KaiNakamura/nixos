@@ -1,7 +1,11 @@
-# Server bundle - Headless server configurations
 { config, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ../modules/docker/docker.nix
+    ../modules/lazydocker/lazydocker.nix
+  ];
+
   # Enable SSH daemon for remote management
   services.openssh.enable = true;
   

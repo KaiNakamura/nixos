@@ -1,12 +1,10 @@
-# Homelab profile configuration
 { config, pkgs, inputs, ... }:
 
 {
   imports = [
-    ../../bundles/base.nix                # Essential system bundle
-    ../../bundles/server.nix              # Server essentials bundle
+    ../../bundles/base.nix
+    ../../bundles/server.nix
     inputs.home-manager.nixosModules.default
-    ../../modules/docker/docker.nix       # Docker for Kubernetes
   ];
 
   # Home Manager configuration
@@ -17,7 +15,4 @@
     };
     backupFileExtension = "backup";
   };
-
-  # Hostname will be set by flake
-  networking.hostName = "PLACEHOLDER";
 }

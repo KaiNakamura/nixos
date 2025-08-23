@@ -21,20 +21,15 @@
           ./profiles/${profile}/configuration.nix
           ./hosts/${hostname}/hardware-configuration.nix
           {
-            networking.hostName = hostname;  # Override placeholder
+            networking.hostName = hostname;
           }
         ];
       };
     in
     {
       nixosConfigurations = {
-        # Desktop machine (ThinkPad T490)
         t490 = mkHost "t490" "desktop";
-        
-        # Homelab cluster (HP ProDesk machines)
-        homelab-00 = mkHost "homelab-00" "homelab";
-        homelab-01 = mkHost "homelab-01" "homelab";
-        homelab-02 = mkHost "homelab-02" "homelab";
+        homelab-00 = mkHost "homelab-00" "desktop";
       };
     };
 }

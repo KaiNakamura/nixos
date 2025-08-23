@@ -1,7 +1,18 @@
-# Base system bundle - Essential configurations for ALL machines
 { config, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ../modules/colors/colors.nix
+    ../modules/vim/vim.nix
+    ../modules/zsh/zsh.nix
+    ../modules/starship/starship.nix
+    ../modules/zoxide/zoxide.nix
+    ../modules/fastfetch/fastfetch.nix
+    ../modules/btop/btop.nix
+    ../modules/eza/eza.nix
+    ../modules/git/git.nix
+  ];
+
   # Bootloader configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
