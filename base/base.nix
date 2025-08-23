@@ -31,7 +31,17 @@
   users.users.kai = {
     isNormalUser = true;
     description = "Kai Nakamura";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+  };
+
+  # Container virtualization
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   # Shell configuration

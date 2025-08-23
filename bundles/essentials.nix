@@ -20,7 +20,7 @@
     ../modules/fastfetch/fastfetch.nix
     
     # Container tools
-    ../modules/docker/docker.nix
+    # NOTE: Docker needs to be enabled system-level so it's not included here
     ../modules/lazydocker/lazydocker.nix
   ];
 }
