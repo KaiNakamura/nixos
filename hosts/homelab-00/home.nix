@@ -15,10 +15,6 @@
     gnome-power-manager # Power management
   ];
 
-  home.sessionVariables = {
-    NIXOS_FLAKE = "/etc/nixos#default";
-  };
-
   imports = [
     ../../modules/colors/colors.nix
     ../../modules/vim/vim.nix

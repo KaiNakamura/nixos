@@ -12,8 +12,8 @@
     };
     
     shellAliases = {
-      # NixOS
-      ns = "sudo nixos-rebuild switch --flake $NIXOS_FLAKE";
+      # Automatically uses hostname as flake target
+      ns = "sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)";
     };
     
     initContent = ''
