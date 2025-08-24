@@ -43,10 +43,10 @@ sudo nixos-rebuild switch --flake /etc/nixos#<hostname>
 
 [SOPS](https://github.com/getsops/sops) is used to manage secrets, more specifically [sops-nix](https://github.com/Mic92/sops-nix). An [age](https://github.com/FiloSottile/age) key is automatically generated on each machine. Secrets are encrypted in Git, and automatically decrypted during NixOS activation.
 
-To edit secrets, simply run:
+To edit secrets, run:
 
 ```sh
-sops secrets.yaml
+sudo sops secrets.yaml
 ```
 
 To view a machine's public key (for adding to `.sops.yaml`), there's a helpful alias:
