@@ -8,7 +8,7 @@
   };
 
   # Configure SOPS secret for Tailscale auth key
-  sops.secrets."tailscale/${config.networking.hostName}" = {
+  sops.secrets."tailscale/homelab" = {
     sopsFile = ../../secrets.yaml;
   };
 
@@ -38,7 +38,7 @@
       if ! ${pkgs.tailscale}/bin/tailscale status >/dev/null 2>&1; then
         echo "Authenticating Tailscale with SOPS-managed auth key..."
         ${pkgs.tailscale}/bin/tailscale up \
-          --auth-key="file:${config.sops.secrets."tailscale/${config.networking.hostName}".path}" \
+          --auth-key="file:${config.sops.secrets."tailscale/homelab".path}" \
           --accept-routes \
           --accept-dns=false
       fi
