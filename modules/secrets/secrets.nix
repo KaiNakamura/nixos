@@ -22,6 +22,12 @@ in
     SOPS_AGE_KEY_FILE = ageKeyPath;
   };
 
+  # Environment variables don't play nice with SDDM + Wayland so this is a
+  # workaround to get it working in zsh
+  programs.zsh.shellInit = ''
+    export SOPS_AGE_KEY_FILE="${ageKeyPath}"
+  '';
+
   # SOPS configuration
   sops = {
     # Default SOPS file location (relative to repo root)
