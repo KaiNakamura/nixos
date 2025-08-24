@@ -4,7 +4,7 @@
   # Enable K3s service with role-based configuration
   services.k3s = {
     enable = true;
-    role = role;
+    role = "server";  # Temporarily hard-coded for debugging
     
     # Common configuration for both server and agent
     extraFlags = lib.optionals (role == "server") [
