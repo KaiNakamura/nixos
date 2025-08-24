@@ -24,7 +24,7 @@
 
   # Configure SOPS secret for K3s token
   sops.secrets."k3s/token" = {
-    sopsFile = ../../../secrets.yaml;
+    sopsFile = ../../secrets.yaml;
   };
 
   # Install Kubernetes management tools on all nodes

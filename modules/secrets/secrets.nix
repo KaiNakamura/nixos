@@ -18,8 +18,8 @@
 
   # SOPS configuration
   sops = {
-    # Default SOPS file location
-    defaultSopsFile = ../../../secrets.yaml;
+    # Default SOPS file location (relative to repo root)
+    defaultSopsFile = ../../secrets.yaml;
     
     # Validate SOPS files at build time
     validateSopsFiles = false;

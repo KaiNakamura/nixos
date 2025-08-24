@@ -9,7 +9,7 @@
 
   # Configure SOPS secret for Tailscale auth key
   sops.secrets."tailscale/${config.networking.hostName}" = {
-    sopsFile = ../../../secrets.yaml;
+    sopsFile = ../../secrets.yaml;
   };
 
   # Open required firewall ports for Tailscale
