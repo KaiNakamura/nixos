@@ -18,7 +18,7 @@ in
   };
 
   # Set environment variables for interactive SOPS usage
-  environment.variables = {
+  environment.sessionVariables = {
     SOPS_AGE_KEY_FILE = ageKeyPath;
   };
 
