@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, role ? "agent", ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
