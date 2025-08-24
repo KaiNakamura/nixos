@@ -44,8 +44,12 @@
     };
 
     # Configure SOPS secret for K3s token
+    # WARNING: Changing this token requires cluster reinitialization
+    # See: https://docs.k3s.io/datastore#datastore-endpoint-format-and-functionality
     sops.secrets."k3s/token" = {
       sopsFile = ../../secrets.yaml;
+      # Restart K3s when token changes
+      restartUnits = [ "k3s.service" ];
     };
 
     # Install Kubernetes management tools on all nodes
