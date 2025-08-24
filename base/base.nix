@@ -1,6 +1,11 @@
 { config, pkgs, inputs, ... }:
 
 {
+  imports = [
+    # System-level modules only
+    ../modules/docker/docker.nix
+  ];
+
   # Bootloader configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

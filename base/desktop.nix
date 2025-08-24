@@ -1,11 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [
-    # System-level modules only
-    ../modules/docker/docker.nix
-  ];
-
   # Display server and desktop environment
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;

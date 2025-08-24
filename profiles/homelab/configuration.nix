@@ -3,6 +3,7 @@
 {
   imports = [
     ../../base/base.nix
+    ../../base/desktop.nix # TODO: Likely remove in the future
     ../../base/server.nix
     inputs.home-manager.nixosModules.default
   ];

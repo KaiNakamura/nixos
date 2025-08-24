@@ -1,8 +1,12 @@
 { config, pkgs, ... }:
 
+# TODO: Likely remove some dependencies for a more minimal setup
+
 {
   imports = [
     ../../bundles/essentials.nix
+    ../../bundles/desktop.nix
+    ../../bundles/applications.nix
   ];
 
   home.username = "kai";
@@ -11,9 +15,12 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Minimal packages for server management
+  # Desktop user packages
   home.packages = with pkgs; [
     gh
+    nautilus # File manager
+    networkmanagerapplet # Network manager GUI
+    gnome-power-manager # Power management
   ];
 
   # Let Home Manager install and manage itself.
