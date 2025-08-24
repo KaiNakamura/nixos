@@ -17,6 +17,11 @@ in
     "age-key-show" = "sudo age-keygen -y ${ageKeyPath}";
   };
 
+  # Set environment variables for interactive SOPS usage
+  environment.variables = {
+    SOPS_AGE_KEY_FILE = ageKeyPath;
+  };
+
   # SOPS configuration
   sops = {
     # Default SOPS file location (relative to repo root)
@@ -24,12 +29,6 @@ in
     
     # Validate SOPS files at build time
     validateSopsFiles = false;
-    
-    # Set environment variables for SOPS operations
-    # This makes SOPS commands work for both root and regular users
-    environment = {
-      SOPS_AGE_KEY_FILE = ageKeyPath;
-    };
     
     # Age key configuration
     age = {
