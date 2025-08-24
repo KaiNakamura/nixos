@@ -38,3 +38,25 @@ However, on a new machine that hasn't been set up yet, you'll need to use `nixos
 ```sh
 sudo nixos-rebuild switch --flake /etc/nixos#<hostname>
 ```
+
+## Secrets
+
+[SOPS](https://github.com/getsops/sops) is used to manage secrets, more specifically [sops-nix](https://github.com/Mic92/sops-nix). An [age](https://github.com/FiloSottile/age) key is automatically generated on each machine. Secrets are encrypted in Git, and automatically decrypted during NixOS activation.
+
+To view a machine's public key (for adding to `.sops.yaml`), there's a helpful alias:
+
+```sh
+age-key-show
+```
+
+Or you can run the full command directly:
+
+```sh
+sudo age-keygen -y /var/lib/sops-nix/key.txt
+```
+
+**Important:** After adding a new machine to `.sops.yaml`, re-encrypt secrets with:
+
+```sh
+sops updatekeys secrets.yaml
+```

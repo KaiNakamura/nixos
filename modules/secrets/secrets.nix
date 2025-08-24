@@ -9,11 +9,8 @@
 
   # Convenience aliases for age key management
   environment.shellAliases = {
-    # Generate a new age key for SOPS
-    "age-key-setup" = "mkdir -p ~/.config/sops/age && age-keygen -o ~/.config/sops/age/keys.txt && echo 'Age key generated at ~/.config/sops/age/keys.txt'";
-    
-    # Show the public key for adding to .sops.yaml
-    "age-key-show" = "age-keygen -y ~/.config/sops/age/keys.txt";
+    # Show the system-wide age public key (for adding to .sops.yaml)
+    "age-key-show" = "sudo age-keygen -y /var/lib/sops-nix/key.txt";
   };
 
   # SOPS configuration
