@@ -7,7 +7,7 @@
     ../../base/server.nix
     ../../modules/secrets/secrets.nix
     ../../modules/tailscale/tailscale.nix
-    (import ../../modules/k3s/k3s.nix { inherit config pkgs lib role; })
+    ../../modules/k3s/k3s.nix
     inputs.home-manager.nixosModules.default
   ];
 
