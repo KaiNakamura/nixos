@@ -1,8 +1,10 @@
 keys:
   - &homelab-00 age1tem4uast6n8ly2uzn2k502dkzzxkfq762eexytnpkfvpts9hsy7qxyqfsl
+  - &homelab-01 age144gwzpcfd7pk6etkajkj8rhxhjs8kze5np5khs6x2hhrahm5tssqlcpgjk
 
 creation_rules:
   - path_regex: secrets\.yaml$
     key_groups:
       - age:
           - *homelab-00
+          - *homelab-01
