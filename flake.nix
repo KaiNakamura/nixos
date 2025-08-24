@@ -30,6 +30,7 @@
       nixosConfigurations = {
         t490 = mkHost "t490" "desktop";
         homelab-00 = mkHost "homelab-00" "desktop";
+        homelab-01 = mkHost "homelab-01" "desktop";
       };
     };
 }
