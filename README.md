@@ -55,7 +55,11 @@ Or to just see them decrypted:
 sudo sops -d secrets.yaml
 ```
 
-To view a machine's public key (for adding to `.sops.yaml`), there's a helpful alias:
+### Adding a New Machine
+
+When setting up a new machine, we need to add its public key to the `.sops.yaml` file to allow it to decrypt the secrets.
+
+To view a machine's public key, there's a helpful alias:
 
 ```sh
 age-key-show
@@ -67,8 +71,8 @@ Or you can run the full command directly:
 sudo age-keygen -y /var/lib/sops-nix/key.txt
 ```
 
-**Important:** After adding a new machine to `.sops.yaml`, re-encrypt secrets with:
+Now we need to re-encrypt the secrets with the new machine's public key. But, we can't do this from the new machine itself yet. So, commit the changed `.sops.yaml` file, then on an already authed machine run:
 
 ```sh
-sops updatekeys secrets.yaml
+sudo sops updatekeys secrets.yaml
 ```
