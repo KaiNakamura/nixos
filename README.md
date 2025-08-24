@@ -49,6 +49,12 @@ To edit secrets, run:
 sudo sops secrets.yaml
 ```
 
+Or to just see them decrypted:
+
+```sh
+sudo sops -d secrets.yaml
+```
+
 To view a machine's public key (for adding to `.sops.yaml`), there's a helpful alias:
 
 ```sh

@@ -11,7 +11,7 @@
       "--disable=traefik"  # We'll manage our own Traefik via GitOps
       "--write-kubeconfig-mode=644"  # Make kubeconfig readable
     ] ++ lib.optionals (role == "agent") [
-      "--server=https://100.64.0.1:6443"  # TODO: Replace with actual Tailscale IP
+      "--server=https://homelab-00:6443"  # Use Tailscale MagicDNS hostname
     ];
     
     # Token file for cluster authentication (managed by SOPS)
