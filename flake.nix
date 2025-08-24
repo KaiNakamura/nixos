@@ -19,8 +19,8 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      # Helper function to create host configurations
-      mkHost = hostname: profile: extraArgs ? {}: nixpkgs.lib.nixosSystem {
+      # Helper function to create host configurations using attribute set parameters
+      mkHost = { hostname, profile, extraArgs ? {} }: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; } // extraArgs;
         modules = [
           ./profiles/${profile}/configuration.nix
@@ -34,9 +34,22 @@
     in
     {
       nixosConfigurations = {
-        t490 = mkHost "t490" "desktop";
-        homelab-00 = mkHost "homelab-00" "homelab" { role = "server"; };
-        homelab-01 = mkHost "homelab-01" "homelab" { role = "agent"; };
+        t490 = mkHost { 
+          hostname = "t490"; 
+          profile = "desktop"; 
+        };
+        
+        homelab-00 = mkHost { 
+          hostname = "homelab-00"; 
+          profile = "homelab"; 
+          extraArgs = { role = "server"; };
+        };
+        
+        homelab-01 = mkHost {
+          hostname = "homelab-01"; 
+          profile = "homelab"; 
+          extraArgs = { role = "agent"; };
+        };
       };
     };
 }
