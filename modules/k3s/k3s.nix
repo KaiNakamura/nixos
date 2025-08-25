@@ -75,10 +75,41 @@
       ];
     };
 
-    # Set KUBECONFIG environment variable for server nodes
+    # Set KUBECONFIG environment variable for all nodes
     # Source: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
-    environment.variables = lib.mkIf (cfg.role == "server") {
-      KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+
+    # Server uses the local kubeconfig
+    environment.variables = {
+      KUBECONFIG = if cfg.role == "server" 
+        then "/etc/rancher/k3s/k3s.yaml"
+        else "/etc/kubernetes/kubeconfig-agent.yaml";
+    };
+
+    # Agents use generated kubeconfig pointing to server
+    # This allows kubectl and other tools to work on agent nodes
+    environment.etc = lib.mkIf (cfg.role == "agent") {
+      "kubernetes/kubeconfig-agent.yaml" = {
+        text = ''
+          apiVersion: v1
+          kind: Config
+          clusters:
+          - name: default
+            cluster:
+              server: https://${cfg.serverHostname}:6443
+              insecure-skip-tls-verify: true
+          users:
+          - name: default
+            user:
+              tokenFile: ${config.sops.secrets."k3s/token".path}
+          contexts:
+          - name: default
+            context:
+              cluster: default
+              user: default
+          current-context: default
+        '';
+        mode = "0644";
+      };
     };
 
     # Service dependencies - ensure Tailscale is running before K3s
