@@ -73,7 +73,8 @@
 
     # Configure SOPS secret for kubectl access token (service account token)
     # This is separate from the node token and used for kubectl API access
-    sops.secrets."k3s/kubectl-token" = {
+    # Initially commented out until we have the token - see manifests.nix for setup instructions
+    sops.secrets."k3s/kubectl-token" = lib.mkIf false {
       sopsFile = ../../secrets.yaml;
       # Make token readable by user for kubectl access on agent nodes
       # This follows the official SOPS-nix recommendation for user-accessible secrets
@@ -130,7 +131,9 @@
           users:
           - name: default
             user:
-              tokenFile: ${config.sops.secrets."k3s/kubectl-token".path}
+              # Initially use a placeholder - will be updated after service account token is available
+              # tokenFile: ${config.sops.secrets."k3s/kubectl-token".path}
+              token: "PLACEHOLDER_TOKEN_UPDATE_AFTER_SETUP"
           contexts:
           - name: default
             context:
