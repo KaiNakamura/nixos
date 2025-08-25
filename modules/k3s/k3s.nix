@@ -16,6 +16,10 @@
 # - 0644 = read/write by owner, read by group and others
 
 {
+  # Import Kubernetes manifests for service account setup
+  imports = [
+    ./manifests.nix
+  ];
   # Define homelab-specific options
   options.homelab = {
     k3s = {
@@ -63,13 +67,19 @@
     # See: https://docs.k3s.io/datastore#datastore-endpoint-format-and-functionality
     sops.secrets."k3s/token" = {
       sopsFile = ../../secrets.yaml;
+      # Restart K3s when token changes
+      restartUnits = [ "k3s.service" ];
+    };
+
+    # Configure SOPS secret for kubectl access token (service account token)
+    # This is separate from the node token and used for kubectl API access
+    sops.secrets."k3s/kubectl-token" = {
+      sopsFile = ../../secrets.yaml;
       # Make token readable by user for kubectl access on agent nodes
       # This follows the official SOPS-nix recommendation for user-accessible secrets
       # See: https://github.com/Mic92/sops-nix#set-secret-permissionowner-and-allow-services-to-access-it
       owner = config.users.users.kai.name;
       mode = "0400";  # Read-only by owner
-      # Restart K3s when token changes
-      restartUnits = [ "k3s.service" ];
     };
 
     # Install Kubernetes management tools on all nodes
@@ -120,7 +130,7 @@
           users:
           - name: default
             user:
-              tokenFile: ${config.sops.secrets."k3s/token".path}
+              tokenFile: ${config.sops.secrets."k3s/kubectl-token".path}
           contexts:
           - name: default
             context:
