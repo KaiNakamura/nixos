@@ -45,6 +45,41 @@
       "k" = "k3s kubectl";
     };
 
+    # Set KUBECONFIG for k3s kubectl to work on agents
+    # Server uses the local kubeconfig, agents use a simple kubeconfig pointing to server
+    environment.variables = {
+      KUBECONFIG = if cfg.role == "server" 
+        then "/etc/rancher/k3s/k3s.yaml"
+        else "/etc/kubernetes/kubeconfig-agent.yaml";
+    };
+
+    # Agents need a kubeconfig pointing to the server
+    environment.etc = lib.mkIf (cfg.role == "agent") {
+      "kubernetes/kubeconfig-agent.yaml" = {
+        text = ''
+          apiVersion: v1
+          kind: Config
+          clusters:
+          - name: default
+            cluster:
+              server: https://${cfg.serverHostname}:6443
+              insecure-skip-tls-verify: true
+          users:
+          - name: default
+            user:
+              # Use the same token file as the agent uses for joining
+              tokenFile: ${config.sops.secrets."k3s/token".path}
+          contexts:
+          - name: default
+            context:
+              cluster: default
+              user: default
+          current-context: default
+        '';
+        mode = "0644";
+      };
+    };
+
     # Configure SOPS secret for K3s token
     # WARNING: Changing this token requires cluster reinitialization
     # See: https://docs.k3s.io/datastore#datastore-endpoint-format-and-functionality
