@@ -1,5 +1,20 @@
 { config, pkgs, lib, ... }:
 
+# NOTE: Permission modes are in octal representation (same as chmod),
+# the digits represent: user|group|others
+# 7 - full (rwx)
+# 6 - read and write (rw-)
+# 5 - read and execute (r-x)
+# 4 - read only (r--)
+# 3 - write and execute (-wx)
+# 2 - write only (-w-)
+# 1 - execute only (--x)
+# 0 - none (---)
+#
+# E.g.,
+# - 0400 = read by owner only
+# - 0644 = read/write by owner, read by group and others
+
 {
   # Define homelab-specific options
   options.homelab = {
@@ -48,6 +63,11 @@
     # See: https://docs.k3s.io/datastore#datastore-endpoint-format-and-functionality
     sops.secrets."k3s/token" = {
       sopsFile = ../../secrets.yaml;
+      # Make token readable by user for kubectl access on agent nodes
+      # This follows the official SOPS-nix recommendation for user-accessible secrets
+      # See: https://github.com/Mic92/sops-nix#set-secret-permissionowner-and-allow-services-to-access-it
+      owner = config.users.users.kai.name;
+      mode = "0400";  # Read-only by owner
       # Restart K3s when token changes
       restartUnits = [ "k3s.service" ];
     };
