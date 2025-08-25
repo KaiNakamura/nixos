@@ -1,25 +1,6 @@
 { config, pkgs, lib, ... }:
 
-# NOTE: Permission modes are in octal representation (same as chmod),
-# the digits represent: user|group|others
-# 7 - full (rwx)
-# 6 - read and write (rw-)
-# 5 - read and execute (r-x)
-# 4 - read only (r--)
-# 3 - write and execute (-wx)
-# 2 - write only (-w-)
-# 1 - execute only (--x)
-# 0 - none (---)
-#
-# E.g.,
-# - 0400 = read by owner only
-# - 0644 = read/write by owner, read by group and others
-
 {
-  # Import Kubernetes manifests for service account setup
-  imports = [
-    ./manifests.nix
-  ];
   # Define homelab-specific options
   options.homelab = {
     k3s = {
@@ -58,8 +39,10 @@
       tokenFile = config.sops.secrets."k3s/token".path;
     };
 
+    # Use K3s built-in kubectl - official method that works on all nodes
+    # Source: https://docs.k3s.io/cluster-access
     environment.shellAliases = {
-      "k" = "kubectl";
+      "k" = "k3s kubectl";
     };
 
     # Configure SOPS secret for K3s token
@@ -71,22 +54,11 @@
       restartUnits = [ "k3s.service" ];
     };
 
-    # Configure SOPS secret for kubectl access token (service account token)
-    # This is separate from the node token and used for kubectl API access
-    # Initially commented out until we have the token - see manifests.nix for setup instructions
-    sops.secrets."k3s/kubectl-token" = lib.mkIf false {
-      sopsFile = ../../secrets.yaml;
-      # Make token readable by user for kubectl access on agent nodes
-      # This follows the official SOPS-nix recommendation for user-accessible secrets
-      # See: https://github.com/Mic92/sops-nix#set-secret-permissionowner-and-allow-services-to-access-it
-      owner = config.users.users.kai.name;
-      mode = "0400";  # Read-only by owner
-    };
-
     # Install Kubernetes management tools on all nodes
     environment.systemPackages = with pkgs; [
-      kubectl  # Kubernetes CLI tool
+      kubectl  # Kubernetes CLI tool (for compatibility with tools that expect it)
       helm  # Helm package manager for Kubernetes
+      k9s  # Kubernetes TUI (may not work without proper kubeconfig, kept for future use)
     ];
 
     # Firewall configuration based on K3s networking requirements
@@ -104,45 +76,6 @@
       allowedUDPPorts = [
         8472  # Flannel VXLAN (default CNI for K3s)
       ];
-    };
-
-    # Set KUBECONFIG environment variable for all nodes
-    # Source: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
-
-    # Server uses the local kubeconfig
-    environment.variables = {
-      KUBECONFIG = if cfg.role == "server" 
-        then "/etc/rancher/k3s/k3s.yaml"
-        else "/etc/kubernetes/kubeconfig-agent.yaml";
-    };
-
-    # Agents use generated kubeconfig pointing to server
-    # This allows kubectl and other tools to work on agent nodes
-    environment.etc = lib.mkIf (cfg.role == "agent") {
-      "kubernetes/kubeconfig-agent.yaml" = {
-        text = ''
-          apiVersion: v1
-          kind: Config
-          clusters:
-          - name: default
-            cluster:
-              server: https://${cfg.serverHostname}:6443
-              insecure-skip-tls-verify: true
-          users:
-          - name: default
-            user:
-              # Initially use a placeholder - will be updated after service account token is available
-              # tokenFile: ${config.sops.secrets."k3s/kubectl-token".path}
-              token: "PLACEHOLDER_TOKEN_UPDATE_AFTER_SETUP"
-          contexts:
-          - name: default
-            context:
-              cluster: default
-              user: default
-          current-context: default
-        '';
-        mode = "0644";
-      };
     };
 
     # Service dependencies - ensure Tailscale is running before K3s
