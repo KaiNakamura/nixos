@@ -1,20 +1,5 @@
 { config, pkgs, lib, ... }:
 
-# NOTE: Permission modes are in octal representation (same as chmod),
-# the digits represent: user|group|others
-# 7 - full (rwx)
-# 6 - read and write (rw-)
-# 5 - read and execute (r-x)
-# 4 - read only (r--)
-# 3 - write and execute (-wx)
-# 2 - write only (-w-)
-# 1 - execute only (--x)
-# 0 - none (---)
-#
-# E.g.,
-# - 0400 = read by owner only
-# - 0644 = read/write by owner, read by group and others
-
 {
   # Define homelab-specific options
   options.homelab = {
@@ -54,45 +39,15 @@
       tokenFile = config.sops.secrets."k3s/token".path;
     };
 
-    # Use K3s built-in kubectl - official method that works on all nodes
-    # Source: https://docs.k3s.io/cluster-access
+    # Use K3s built-in kubectl
+    # TODO: Maybe change to just kubectl? Not sure
     environment.shellAliases = {
       "k" = "k3s kubectl";
     };
 
-    # Set KUBECONFIG for k3s kubectl to work on agents
-    # Server uses the local kubeconfig, agents use a simple kubeconfig pointing to server
-    environment.variables = {
-      KUBECONFIG = if cfg.role == "server" 
-        then "/etc/rancher/k3s/k3s.yaml"
-        else "/etc/kubernetes/kubeconfig-agent.yaml";
-    };
-
-    # Agents need a kubeconfig pointing to the server
-    environment.etc = lib.mkIf (cfg.role == "agent") {
-      "kubernetes/kubeconfig-agent.yaml" = {
-        text = ''
-          apiVersion: v1
-          kind: Config
-          clusters:
-          - name: default
-            cluster:
-              server: https://${cfg.serverHostname}:6443
-              insecure-skip-tls-verify: true
-          users:
-          - name: default
-            user:
-              # Use the same token file as the agent uses for joining
-              tokenFile: ${config.sops.secrets."k3s/token".path}
-          contexts:
-          - name: default
-            context:
-              cluster: default
-              user: default
-          current-context: default
-        '';
-        mode = "0644";
-      };
+    # Set KUBECONFIG only on server
+    environment.variables = lib.mkIf (cfg.role == "server") {
+      KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
     };
 
     # Configure SOPS secret for K3s token
@@ -102,17 +57,14 @@
       sopsFile = ../../secrets.yaml;
       # Restart K3s when token changes
       restartUnits = [ "k3s.service" ];
-      # Make token readable by user for kubectl access
-      owner = config.users.users.kai.name;
-      mode = "0400";  # Read-only by owner
     };
 
-    # Install Kubernetes management tools on all nodes
-    environment.systemPackages = with pkgs; [
-      kubectl  # Kubernetes CLI tool (for compatibility with tools that expect it)
+    # Install Kubernetes management tools only on server
+    environment.systemPackages = lib.optionals (cfg.role == "server") (with pkgs; [
+      kubectl  # Kubernetes CLI tool
       helm  # Helm package manager for Kubernetes
-      k9s  # Kubernetes TUI (may not work without proper kubeconfig, kept for future use)
-    ];
+      k9s  # Kubernetes TUI
+    ]);
 
     # Firewall configuration based on K3s networking requirements
     # Source: https://docs.k3s.io/installation/requirements#networking
