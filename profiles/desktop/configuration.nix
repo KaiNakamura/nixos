@@ -1,9 +1,10 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
     ../../base/base.nix
     ../../base/desktop.nix
+    ../modules/tailscale/tailscale.nix
     inputs.home-manager.nixosModules.default
   ];
 
