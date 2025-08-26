@@ -23,5 +23,6 @@
     # NOTE: Docker needs to be enabled system-level so it's not included here
     ../modules/lazydocker/lazydocker.nix
     ../modules/k9s/k9s.nix
+    ../modules/tailscale/tailscale.nix
   ];
 }

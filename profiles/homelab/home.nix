@@ -7,6 +7,7 @@
     ../../bundles/essentials.nix
     ../../bundles/desktop.nix
     ../../bundles/applications.nix
+    ../../modules/k3s/k3s.nix
   ];
 
   home.username = "kai";
