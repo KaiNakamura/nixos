@@ -4,6 +4,7 @@
   imports = [
     ../../base/base.nix
     ../../base/desktop.nix
+    ../../modules/secrets/secrets.nix
     ../../modules/tailscale/tailscale.nix
     inputs.home-manager.nixosModules.default
   ];
