@@ -11,6 +11,7 @@
   };
 
   programs.zsh.shellAliases = {
+    g = "git";
     gs = "git status";
     ga = "git add";
     gm = "git commit -m";

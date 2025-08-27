@@ -14,6 +14,11 @@
       useRoutingFeatures = "client";
     };
 
+    # Shell alias
+    programs.zsh.shellAliases = {
+      ts = "tailscale";
+    };
+
     # Configure SOPS secret for Tailscale auth key
     sops.secrets."tailscale/homelab" = {
       sopsFile = ../../secrets.yaml;
