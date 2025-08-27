@@ -10,6 +10,9 @@
     inputs.home-manager.nixosModules.default
   ];
 
+  # Enable Tailscale SSH for homelab profile
+  services.tailscale.enableSSH = true;
+
   # Home Manager configuration
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
