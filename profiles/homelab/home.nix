@@ -1,12 +1,21 @@
 { config, pkgs, ... }:
 
-# TODO: Likely remove some dependencies for a more minimal setup
-
 {
   imports = [
-    ../../bundles/essentials.nix
-    ../../bundles/desktop.nix
-    ../../bundles/applications.nix
+    # Essentials
+    ../../modules/colors/colors.nix
+    ../../modules/fonts/fonts.nix
+    ../../modules/zsh/zsh.nix
+    ../../modules/starship/starship.nix
+    ../../modules/zoxide/zoxide.nix
+    ../../modules/eza/eza.nix
+    ../../modules/git/git.nix
+    ../../modules/vim/vim.nix
+    ../../modules/nvim/nvim.nix
+    ../../modules/btop/btop.nix
+    ../../modules/fastfetch/fastfetch.nix
+    ../../modules/lazydocker/lazydocker.nix
+    ../../modules/k9s/k9s.nix
   ];
 
   home.username = "kai";
@@ -15,12 +24,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # Desktop user packages
   home.packages = with pkgs; [
     gh
-    nautilus # File manager
-    networkmanagerapplet # Network manager GUI
-    gnome-power-manager # Power management
   ];
 
   # Let Home Manager install and manage itself.

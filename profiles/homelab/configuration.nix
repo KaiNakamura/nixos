@@ -3,8 +3,7 @@
 {
   imports = [
     ../../base/base.nix
-    ../../base/desktop.nix # TODO: Likely remove in the future
-    ../../base/server.nix
+    ../../modules/secrets/secrets.nix
     ../../modules/tailscale/tailscale.nix
     ../../modules/k3s/k3s.nix
     inputs.home-manager.nixosModules.default

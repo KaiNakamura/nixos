@@ -1,11 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [
-    # System-level modules only
-    ../modules/docker/docker.nix
-  ];
-
   # Bootloader configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -18,7 +13,6 @@
 
   # Time zone and internationalization
   time.timeZone = "America/New_York";
-  
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -36,23 +30,8 @@
   users.users.kai = {
     isNormalUser = true;
     description = "Kai Nakamura";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
-
-  # Container virtualization
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
-
-  # Shell configuration
-  programs.zsh.enable = true;
-  environment.shells = with pkgs; [ zsh ];
-  users.defaultUserShell = pkgs.zsh;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -63,6 +42,11 @@
     git
     home-manager
   ];
+
+  # Shell configuration
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
 
   # System state version
   system.stateVersion = "25.05";
