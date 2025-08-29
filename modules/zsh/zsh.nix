@@ -36,8 +36,8 @@
       # Keybindings
       bindkey '^R' history-incremental-search-backward
 
-      # Accept autosuggestion with Alt+;
-      bindkey '^[;' autosuggest-accept
+      # Accept autosuggestion with Alt+l
+      bindkey '^[l' autosuggest-accept
     '';
   };
 }
