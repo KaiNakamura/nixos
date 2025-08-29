@@ -33,11 +33,14 @@
         sudo nixos-rebuild switch --flake "/etc/nixos#$target" "$@"
       }
       
-      # Keybindings
+      # Search command history with Ctrl+R
       bindkey '^R' history-incremental-search-backward
 
       # Accept autosuggestion with Alt+l
       bindkey '^[l' autosuggest-accept
+
+      # Accept and execute autosuggestion with Alt+Enter
+      bindkey "\e\r" autosuggest-execute
     '';
   };
 }
