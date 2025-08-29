@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
-  programs.tldr = {
+  programs.tealdeer = {
     enable = true;
+    settings = {
+      # Update cache automatically
+      auto_update = true;
+    };
   };
 }
