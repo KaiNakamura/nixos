@@ -16,6 +16,10 @@
     ../../modules/fastfetch/fastfetch.nix
     ../../modules/fd/fd.nix
     ../../modules/bat/bat.nix
+    ../../modules/fzf/fzf.nix
+    ../../modules/ripgrep/ripgrep.nix
+    ../../modules/tldr/tldr.nix
+    ../../modules/delta/delta.nix
     ../../modules/lazydocker/lazydocker.nix
     ../../modules/k9s/k9s.nix
 
