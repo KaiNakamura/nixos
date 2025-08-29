@@ -7,7 +7,18 @@
     userEmail = "kaihnakamura@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
+      core.excludesFile = "~/.gitignore_global";
+      url."ssh://git@github.com".insteadOf = "https://github.com";
+      pager.branch = false;
     };
+  };
+
+  home.file.".gitignore_global" = {
+    text = ''
+      *.swp
+      *.code-workspace
+      .vscode/
+    '';
   };
 
   programs.zsh.shellAliases = {
