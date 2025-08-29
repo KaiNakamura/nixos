@@ -14,6 +14,7 @@
     ../../modules/nvim/nvim.nix
     ../../modules/btop/btop.nix
     ../../modules/fastfetch/fastfetch.nix
+    ../../modules/fd/fd.nix
     ../../modules/lazydocker/lazydocker.nix
     ../../modules/k9s/k9s.nix
 
