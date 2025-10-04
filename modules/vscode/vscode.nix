@@ -5,7 +5,7 @@
     enable = true;
     
     # Core extensions managed by Nix
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       # Vim
       vscodevim.vim
 
@@ -53,7 +53,7 @@
     mutableExtensionsDir = true;
 
     # User settings
-    userSettings = {
+    profiles.default.userSettings = {
       # Editor
       "editor.acceptSuggestionOnCommitCharacter" = false;
       "editor.acceptSuggestionOnEnter" = "off";
