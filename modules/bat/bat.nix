@@ -5,6 +5,8 @@
   };
 
   programs.zsh.shellAliases = {
-    cat = "bat";
+    # Remove decorations and disable pager, this is useful for things that
+    # expect `cat` to behave like `cat`.
+    cat = "bat --style plain --pager never";
   };
 }
