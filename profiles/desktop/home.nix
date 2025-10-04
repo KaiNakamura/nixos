@@ -22,6 +22,7 @@
     ../../modules/delta/delta.nix
     ../../modules/lazydocker/lazydocker.nix
     ../../modules/k9s/k9s.nix
+    ../../modules/python/python.nix
 
     # Desktop
     ../../modules/hypr/hypr.nix
