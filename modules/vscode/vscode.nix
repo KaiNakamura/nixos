@@ -35,7 +35,6 @@
       # C / C++
       ms-vscode.cpptools
       ms-vscode.cpptools-extension-pack
-      ms-vscode.cpptools-themes
       ms-vscode.cmake-tools
       twxs.cmake
 
