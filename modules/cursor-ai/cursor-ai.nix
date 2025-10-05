@@ -1,14 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   editorConfig = import ../vscode/editor-config.nix { inherit pkgs; };
-  
-  # Create symlinks for each extension so Cursor can find them
-  # Cursor looks for extensions in ~/.cursor/extensions
-  extensionLinks = lib.listToAttrs (map (ext: {
-    name = ".cursor/extensions/${ext.vscodeExtUniqueId}";
-    value = { source = "${ext}/share/vscode/extensions/${ext.vscodeExtUniqueId}"; };
-  }) editorConfig.extensions);
 in
 {
   # Install Cursor IDE (available as code-cursor in nixpkgs)
@@ -20,8 +13,11 @@ in
   # Settings are stored in ~/.config/Cursor/User/settings.json
   # Keybindings are in ~/.config/Cursor/User/keybindings.json
   
-  # Merge extension symlinks with config files
-  home.file = extensionLinks // {
+  # Note: Cursor has its own extension marketplace (compatible with VS Code extensions)
+  # Extensions should be installed through Cursor's Extensions panel
+  # The same extension IDs from VS Code will work in Cursor
+  
+  home.file = {
     # Apply shared editor configuration with Cursor-specific overrides
     ".config/Cursor/User/settings.json".text = builtins.toJSON (
       editorConfig.settings // {
