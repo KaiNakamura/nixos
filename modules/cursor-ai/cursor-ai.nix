@@ -2,11 +2,17 @@
 
 let
   editorConfig = import ../vscode/editor-config.nix { inherit pkgs; };
+  
+  # Create a wrapper script for cursor that runs in background (like VS Code's 'code' command)
+  cursorWrapper = pkgs.writeShellScriptBin "cursor" ''
+    exec ${pkgs.code-cursor}/bin/code-cursor "$@" > /dev/null 2>&1 &
+  '';
 in
 {
   # Install Cursor IDE (available as code-cursor in nixpkgs)
   home.packages = with pkgs; [
     code-cursor
+    cursorWrapper  # Wrapper that runs cursor in background
   ];
 
   # Cursor uses similar config structure to VS Code
