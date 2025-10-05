@@ -237,22 +237,60 @@
         when = "editorFocus";
       }
 
-      # Resize sidebar and panels (Ctrl+Arrow)
-      {
-        key = "ctrl+left";
-        command = "workbench.action.decreaseViewSize";
-      }
+      # Resize sidebar and panels (Ctrl+Arrow) - Directional
+      # Sidebar (left): Right arrow increases, Left arrow decreases
       {
         key = "ctrl+right";
         command = "workbench.action.increaseViewSize";
+        when = "sideBarFocus";
+      }
+      {
+        key = "ctrl+left";
+        command = "workbench.action.decreaseViewSize";
+        when = "sideBarFocus";
+      }
+      # Panel (bottom): Down arrow increases, Up arrow decreases
+      {
+        key = "ctrl+down";
+        command = "workbench.action.increaseViewSize";
+        when = "panelFocus";
       }
       {
         key = "ctrl+up";
         command = "workbench.action.decreaseViewSize";
+        when = "panelFocus";
+      }
+      # Auxiliary bar (right, e.g., Copilot): Left arrow increases, Right arrow decreases
+      {
+        key = "ctrl+left";
+        command = "workbench.action.increaseViewSize";
+        when = "auxiliaryBarFocus";
+      }
+      {
+        key = "ctrl+right";
+        command = "workbench.action.decreaseViewSize";
+        when = "auxiliaryBarFocus";
+      }
+      # Editor splits: Use standard Vim-like behavior
+      {
+        key = "ctrl+right";
+        command = "workbench.action.increaseViewWidth";
+        when = "editorFocus";
+      }
+      {
+        key = "ctrl+left";
+        command = "workbench.action.decreaseViewWidth";
+        when = "editorFocus";
       }
       {
         key = "ctrl+down";
-        command = "workbench.action.increaseViewSize";
+        command = "workbench.action.increaseViewHeight";
+        when = "editorFocus";
+      }
+      {
+        key = "ctrl+up";
+        command = "workbench.action.decreaseViewHeight";
+        when = "editorFocus";
       }
 
       # Disable default Ctrl+Arrow behavior
