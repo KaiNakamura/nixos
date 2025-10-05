@@ -35,6 +35,7 @@
     # Applications
     ../../modules/obsidian/obsidian.nix
     ../../modules/vscode/vscode.nix
+    ../../modules/vscode/cursor-ai.nix
     ../../modules/mpv/mpv.nix
     ../../modules/imv/imv.nix
     ../../modules/gowall/gowall.nix
