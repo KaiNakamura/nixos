@@ -36,6 +36,10 @@
       # Search command history with Ctrl+R
       bindkey '^R' history-incremental-search-backward
 
+      # Navigate command history with Ctrl+J/K (like Vim)
+      bindkey '^J' down-line-or-history
+      bindkey '^K' up-line-or-history
+
       # Accept autosuggestion with Alt+l
       bindkey '^[l' autosuggest-accept
 

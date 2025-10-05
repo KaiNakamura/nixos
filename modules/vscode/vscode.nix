@@ -73,7 +73,7 @@
         "<C-d>" = true;
         "<C-s>" = false;
         "<C-z>" = false;
-        # "<C-w>" = false;
+        "<C-w>" = false;
       };
       "vim.digraphs" = {};
 
