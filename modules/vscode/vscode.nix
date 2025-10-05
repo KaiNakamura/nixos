@@ -187,20 +187,27 @@
         command = "workbench.action.terminal.focus";
         when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
+
+      # Close/hide focused panel or sidebar (Ctrl+W)
       {
-        key = "space q";
+        key = "ctrl+w";
         command = "workbench.action.toggleSidebarVisibility";
-        when = "!inputFocus && sideBarFocus";
+        when = "sideBarFocus";
       }
       {
-        key = "space q";
+        key = "ctrl+w";
         command = "workbench.action.closePanel";
-        when = "!inputFocus && panelFocus";
+        when = "panelFocus";
       }
       {
-        key = "space q";
+        key = "ctrl+w";
         command = "workbench.action.closeAuxiliaryBar";
-        when = "!inputFocus && auxiliaryBarFocus";
+        when = "auxiliaryBarFocus";
+      }
+      {
+        key = "ctrl+w";
+        command = "workbench.action.closeActiveEditor";
+        when = "editorFocus";
       }
 
       # Tab navigation
@@ -215,6 +222,17 @@
       {
         key = "alt+q";
         command = "workbench.action.closeActiveEditor";
+      }
+
+      # Disable default Ctrl+W (which closes entire window)
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeWindow";
+      }
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeGroup";
+        when = "activeEditorGroupEmpty && multipleEditorGroups";
       }
 
       # File operations
