@@ -237,6 +237,46 @@
         when = "editorFocus";
       }
 
+      # Resize sidebar and panels (Ctrl+Arrow)
+      {
+        key = "ctrl+left";
+        command = "workbench.action.decreaseViewSize";
+      }
+      {
+        key = "ctrl+right";
+        command = "workbench.action.increaseViewSize";
+      }
+      {
+        key = "ctrl+up";
+        command = "workbench.action.decreaseViewSize";
+      }
+      {
+        key = "ctrl+down";
+        command = "workbench.action.increaseViewSize";
+      }
+
+      # Disable default Ctrl+Arrow behavior
+      {
+        key = "ctrl+left";
+        command = "-cursorWordLeft";
+        when = "textInputFocus";
+      }
+      {
+        key = "ctrl+right";
+        command = "-cursorWordRight";
+        when = "textInputFocus";
+      }
+      {
+        key = "ctrl+up";
+        command = "-scrollLineUp";
+        when = "textInputFocus";
+      }
+      {
+        key = "ctrl+down";
+        command = "-scrollLineDown";
+        when = "textInputFocus";
+      }
+
       # Tab navigation
       {
         key = "alt+l";
