@@ -195,7 +195,7 @@
         when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
  
-      # Disable default Ctrl+W and Alt+Q behavior first (prevent closing entire window)
+      # Disable default Ctrl+W behavior completely (prevent closing anything)
       {
         key = "ctrl+w";
         command = "-workbench.action.closeWindow";
@@ -207,6 +207,14 @@
       {
         key = "ctrl+w";
         command = "-workbench.action.closeGroup";
+      }
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeActiveEditor";
+      }
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeEditor";
       }
       {
         key = "alt+q";
