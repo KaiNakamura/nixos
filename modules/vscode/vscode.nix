@@ -215,24 +215,24 @@
         command = "-workbench.action.closeWindow";
       }
 
-      # Close/hide focused panel or sidebar (Ctrl+W)
+      # Close/hide focused panel or sidebar (Ctrl+Q)
       {
-        key = "ctrl+w";
+        key = "ctrl+q";
         command = "workbench.action.toggleSidebarVisibility";
         when = "sideBarFocus";
       }
       {
-        key = "ctrl+w";
+        key = "ctrl+q";
         command = "workbench.action.closePanel";
         when = "panelFocus";
       }
       {
-        key = "ctrl+w";
+        key = "ctrl+q";
         command = "workbench.action.closeAuxiliaryBar";
         when = "auxiliaryBarFocus";
       }
       {
-        key = "ctrl+w";
+        key = "ctrl+q";
         command = "workbench.action.closeActiveEditor";
         when = "editorFocus";
       }
@@ -271,27 +271,30 @@
         command = "workbench.action.decreaseViewSize";
         when = "auxiliaryBarFocus";
       }
-      # Editor splits: Use standard Vim-like behavior
-      {
-        key = "ctrl+right";
-        command = "workbench.action.increaseViewWidth";
-        when = "editorFocus";
-      }
-      {
-        key = "ctrl+left";
-        command = "workbench.action.decreaseViewWidth";
-        when = "editorFocus";
-      }
-      {
-        key = "ctrl+down";
-        command = "workbench.action.increaseViewHeight";
-        when = "editorFocus";
-      }
-      {
-        key = "ctrl+up";
-        command = "workbench.action.decreaseViewHeight";
-        when = "editorFocus";
-      }
+      # Editor splits: Directional resize based on arrow keys
+      # Unfortunately, VS Code doesn't have truly directional resize commands
+      # So we use increase/decrease which work on the currently focused split
+      # The behavior may not be perfect for all split configurations
+      # {
+      #   key = "ctrl+right";
+      #   command = "workbench.action.increaseViewSize";
+      #   when = "editorFocus";
+      # }
+      # {
+      #   key = "ctrl+left";
+      #   command = "workbench.action.decreaseViewSize";
+      #   when = "editorFocus";
+      # }
+      # {
+      #   key = "ctrl+down";
+      #   command = "workbench.action.increaseViewSize";
+      #   when = "editorFocus";
+      # }
+      # {
+      #   key = "ctrl+up";
+      #   command = "workbench.action.decreaseViewSize";
+      #   when = "editorFocus";
+      # }
 
       # Disable default Ctrl+Arrow behavior
       {
