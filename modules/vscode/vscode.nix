@@ -165,26 +165,27 @@
         when = "panelFocus || auxiliaryBarFocus";
       }
 
-      # Leader-based navigation (Space = leader, works from editor)
+      # Leader-based navigation (Space = leader)
+      # Works in editor (Vim Normal mode) and sidebars/panels, but NOT in text input fields
       {
         key = "space j";
         command = "workbench.action.focusActiveEditorGroup";
-        when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
+        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
       {
         key = "space e";
         command = "workbench.view.explorer";
-        when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
+        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
       {
         key = "space o";
         command = "workbench.panel.chat.view.copilot.focus";
-        when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
+        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
       {
         key = "space t";
         command = "workbench.action.terminal.focus";
-        when = "editorTextFocus && vim.active && vim.mode != 'Insert'";
+        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
 
       # Tab navigation
