@@ -73,7 +73,7 @@
         "<C-d>" = true;
         "<C-s>" = false;
         "<C-z>" = false;
-        "<C-w>" = false;
+        # "<C-w>" = false;
       };
       "vim.digraphs" = {};
 
@@ -188,6 +188,17 @@
         command = "workbench.action.terminal.focus";
         when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
+      # Additional leader shortcuts
+      {
+        key = "space s f";
+        command = "workbench.action.quickOpen";
+        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+      }
+      {
+        key = "space s g";
+        command = "workbench.action.findInFiles";
+        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+      }
  
       # Disable default Ctrl+W and Alt+Q behavior first (prevent closing entire window)
       {
@@ -271,30 +282,6 @@
         command = "workbench.action.decreaseViewSize";
         when = "auxiliaryBarFocus";
       }
-      # Editor splits: Directional resize based on arrow keys
-      # Unfortunately, VS Code doesn't have truly directional resize commands
-      # So we use increase/decrease which work on the currently focused split
-      # The behavior may not be perfect for all split configurations
-      # {
-      #   key = "ctrl+right";
-      #   command = "workbench.action.increaseViewSize";
-      #   when = "editorFocus";
-      # }
-      # {
-      #   key = "ctrl+left";
-      #   command = "workbench.action.decreaseViewSize";
-      #   when = "editorFocus";
-      # }
-      # {
-      #   key = "ctrl+down";
-      #   command = "workbench.action.increaseViewSize";
-      #   when = "editorFocus";
-      # }
-      # {
-      #   key = "ctrl+up";
-      #   command = "workbench.action.decreaseViewSize";
-      #   when = "editorFocus";
-      # }
 
       # Disable default Ctrl+Arrow behavior
       {
@@ -332,11 +319,19 @@
         command = "workbench.action.closeActiveEditor";
       }
 
-      # File operations
+      # Split operations
+      {
+        key = "ctrl+i";
+        command = "workbench.action.splitEditorDown";
+        when = "editorFocus";
+      }
       {
         key = "ctrl+o";
-        command = "workbench.action.quickOpen";
+        command = "workbench.action.splitEditorRight";
+        when = "editorFocus";
       }
+
+      # File operations
       {
         key = "ctrl+n";
         command = "explorer.newFile";
@@ -360,7 +355,7 @@
         when = "editorFocus";
       }
 
-      # Disable conflicting defaults for ctrl+o
+      # Disable conflicting defaults for ctrl+o and ctrl+i
       {
         key = "ctrl+o";
         command = "-workbench.action.files.openFile";
@@ -379,6 +374,11 @@
         key = "ctrl+o";
         command = "-extension.vim_ctrl+o";
         when = "editorTextFocus && vim.active && vim.use<C-o> && !inDebugRepl";
+      }
+      {
+        key = "ctrl+i";
+        command = "-extension.vim_ctrl+i";
+        when = "editorTextFocus && vim.active && vim.use<C-i> && !inDebugRepl";
       }
     ];
   };
