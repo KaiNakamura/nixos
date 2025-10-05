@@ -169,11 +169,6 @@
       # Leader-based navigation (Space = leader)
       # Works in editor (Vim Normal mode) and sidebars/panels, but NOT in text input fields
       {
-        key = "space j";
-        command = "workbench.action.focusActiveEditorGroup";
-        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
-      }
-      {
         key = "space e";
         command = "workbench.view.explorer";
         when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
@@ -336,6 +331,13 @@
         key = "ctrl+n";
         command = "explorer.newFile";
         when = "explorerViewletFocus";
+      }
+
+      # Explorer operations
+      {
+        key = "shift+w";
+        command = "list.collapseAll";
+        when = "explorerViewletFocus && filesExplorerFocus";
       }
 
       # Disable conflicting defaults for alt+h/l
