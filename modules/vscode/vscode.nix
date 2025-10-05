@@ -347,6 +347,16 @@
         command = "list.collapseAll";
         when = "explorerViewletFocus && filesExplorerFocus";
       }
+      {
+        key = "d";
+        command = "deleteFile";
+        when = "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+      }
+      {
+        key = "r";
+        command = "renameFile";
+        when = "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+      }
 
       # Disable conflicting defaults for alt+h/l
       {
