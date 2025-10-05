@@ -43,9 +43,6 @@
       # Accept autosuggestion with Ctrl+N
       bindkey '^N' end-of-line
 
-      # Accept and execute autosuggestion with Ctrl+Enter
-      bindkey '^M' autosuggest-execute
-
       # Delete word backwards with Ctrl+Backspace
       bindkey '^H' backward-kill-word
     '';
