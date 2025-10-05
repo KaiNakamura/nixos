@@ -187,7 +187,7 @@
         command = "workbench.action.terminal.focus";
         when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
-
+ 
       # Close/hide focused panel or sidebar (Ctrl+W)
       {
         key = "ctrl+w";
@@ -224,17 +224,6 @@
         command = "workbench.action.closeActiveEditor";
       }
 
-      # Disable default Ctrl+W (which closes entire window)
-      {
-        key = "ctrl+w";
-        command = "-workbench.action.closeWindow";
-      }
-      {
-        key = "ctrl+w";
-        command = "-workbench.action.closeGroup";
-        when = "activeEditorGroupEmpty && multipleEditorGroups";
-      }
-
       # File operations
       {
         key = "ctrl+o";
@@ -244,6 +233,32 @@
         key = "ctrl+n";
         command = "explorer.newFile";
         when = "explorerViewletFocus";
+      }
+
+      # Disable default Ctrl+W and Alt+Q behavior (prevent closing entire window)
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeWindow";
+      }
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeEditorsInGroup";
+      }
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeGroup";
+      }
+      {
+        key = "alt+q";
+        command = "-workbench.action.closeWindow";
+      }
+      {
+        key = "ctrl+q";
+        command = "-workbench.action.quit";
+      }
+      {
+        key = "ctrl+q";
+        command = "-workbench.action.closeWindow";
       }
 
       # Disable conflicting defaults for alt+h/l
