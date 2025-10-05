@@ -73,6 +73,7 @@
         "<C-d>" = true;
         "<C-s>" = false;
         "<C-z>" = false;
+        "<C-w>" = false;
       };
       "vim.digraphs" = {};
 
@@ -188,6 +189,32 @@
         when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
  
+      # Disable default Ctrl+W and Alt+Q behavior first (prevent closing entire window)
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeWindow";
+      }
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeEditorsInGroup";
+      }
+      {
+        key = "ctrl+w";
+        command = "-workbench.action.closeGroup";
+      }
+      {
+        key = "alt+q";
+        command = "-workbench.action.closeWindow";
+      }
+      {
+        key = "ctrl+q";
+        command = "-workbench.action.quit";
+      }
+      {
+        key = "ctrl+q";
+        command = "-workbench.action.closeWindow";
+      }
+
       # Close/hide focused panel or sidebar (Ctrl+W)
       {
         key = "ctrl+w";
@@ -233,32 +260,6 @@
         key = "ctrl+n";
         command = "explorer.newFile";
         when = "explorerViewletFocus";
-      }
-
-      # Disable default Ctrl+W and Alt+Q behavior (prevent closing entire window)
-      {
-        key = "ctrl+w";
-        command = "-workbench.action.closeWindow";
-      }
-      {
-        key = "ctrl+w";
-        command = "-workbench.action.closeEditorsInGroup";
-      }
-      {
-        key = "ctrl+w";
-        command = "-workbench.action.closeGroup";
-      }
-      {
-        key = "alt+q";
-        command = "-workbench.action.closeWindow";
-      }
-      {
-        key = "ctrl+q";
-        command = "-workbench.action.quit";
-      }
-      {
-        key = "ctrl+q";
-        command = "-workbench.action.closeWindow";
       }
 
       # Disable conflicting defaults for alt+h/l
