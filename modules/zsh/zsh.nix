@@ -43,8 +43,8 @@
       # Accept autosuggestion with Alt+l
       bindkey '^[l' autosuggest-accept
 
-      # Accept and execute autosuggestion with Alt+Enter
-      bindkey "\e\r" autosuggest-execute
+      # Accept and execute autosuggestion with Ctrl+Enter
+      bindkey '^M' autosuggest-execute
     '';
   };
 }
