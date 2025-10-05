@@ -68,7 +68,7 @@
       # Vim
       "vim.useSystemClipboard" = true;
       "vim.vimrc.enable" = true;
-      "vim.leader" = "<Space>";
+      # "vim.leader" = "<Space>";
       "vim.handleKeys" = {
         "<C-d>" = true;
         "<C-s>" = false;
@@ -146,93 +146,93 @@
       };
     };
 
-    # Keybindings
-    profiles.default.keybindings = [
-      # Leader-based navigation (Space = leader via vim.leader)
-      {
-        key = "space j";
-        command = "workbench.action.focusActiveEditorGroup";
-        when = "vim.mode == 'Normal'";
-      }
-      {
-        key = "space e";
-        command = "workbench.view.explorer";
-        when = "vim.mode == 'Normal'";
-      }
-      {
-        key = "space o";
-        command = "workbench.panel.chat.view.copilot.focus";
-        when = "vim.mode == 'Normal'";
-      }
-      {
-        key = "space t";
-        command = "workbench.action.terminal.focus";
-        when = "vim.mode == 'Normal'";
-      }
+    # # Keybindings
+    # profiles.default.keybindings = [
+    #   # Leader-based navigation (Space = leader via vim.leader)
+    #   {
+    #     key = "space j";
+    #     command = "workbench.action.focusActiveEditorGroup";
+    #     when = "vim.mode == 'Normal'";
+    #   }
+    #   {
+    #     key = "space e";
+    #     command = "workbench.view.explorer";
+    #     when = "vim.mode == 'Normal'";
+    #   }
+    #   {
+    #     key = "space o";
+    #     command = "workbench.panel.chat.view.copilot.focus";
+    #     when = "vim.mode == 'Normal'";
+    #   }
+    #   {
+    #     key = "space t";
+    #     command = "workbench.action.terminal.focus";
+    #     when = "vim.mode == 'Normal'";
+    #   }
 
-      # Tab navigation
-      {
-        key = "alt+l";
-        command = "workbench.action.nextEditor";
-      }
-      {
-        key = "alt+h";
-        command = "workbench.action.previousEditor";
-      }
-      {
-        key = "alt+q";
-        command = "workbench.action.closeActiveEditor";
-      }
+    #   # Tab navigation
+    #   {
+    #     key = "alt+l";
+    #     command = "workbench.action.nextEditor";
+    #   }
+    #   {
+    #     key = "alt+h";
+    #     command = "workbench.action.previousEditor";
+    #   }
+    #   {
+    #     key = "alt+q";
+    #     command = "workbench.action.closeActiveEditor";
+    #   }
 
-      # File operations
-      {
-        key = "ctrl+o";
-        command = "workbench.action.quickOpen";
-      }
-      {
-        key = "ctrl+n";
-        command = "explorer.newFile";
-        when = "explorerViewletFocus";
-      }
+    #   # File operations
+    #   {
+    #     key = "ctrl+o";
+    #     command = "workbench.action.quickOpen";
+    #   }
+    #   {
+    #     key = "ctrl+n";
+    #     command = "explorer.newFile";
+    #     when = "explorerViewletFocus";
+    #   }
 
-      # Disable conflicting defaults for alt+h/l
-      {
-        key = "alt+h";
-        command = "-testing.toggleTestingPeekHistory";
-        when = "testing.isPeekVisible";
-      }
-      {
-        key = "alt+l";
-        command = "-toggleSearchEditorContextLines";
-        when = "inSearchEditor";
-      }
-      {
-        key = "alt+l";
-        command = "-toggleFindInSelection";
-        when = "editorFocus";
-      }
+    #   # Disable conflicting defaults for alt+h/l
+    #   {
+    #     key = "alt+h";
+    #     command = "-testing.toggleTestingPeekHistory";
+    #     when = "testing.isPeekVisible";
+    #   }
+    #   {
+    #     key = "alt+l";
+    #     command = "-toggleSearchEditorContextLines";
+    #     when = "inSearchEditor";
+    #   }
+    #   {
+    #     key = "alt+l";
+    #     command = "-toggleFindInSelection";
+    #     when = "editorFocus";
+    #   }
 
-      # Disable conflicting defaults for ctrl+o
-      {
-        key = "ctrl+o";
-        command = "-workbench.action.files.openFile";
-        when = "true";
-      }
-      {
-        key = "ctrl+o";
-        command = "-workbench.action.files.openFolderViaWorkspace";
-        when = "!openFolderWorkspaceSupport && workbenchState == 'workspace'";
-      }
-      {
-        key = "ctrl+o";
-        command = "-workbench.action.files.openFileFolder";
-        when = "isMacNative && openFolderWorkspaceSupport";
-      }
-      {
-        key = "ctrl+o";
-        command = "-extension.vim_ctrl+o";
-        when = "editorTextFocus && vim.active && vim.use<C-o> && !inDebugRepl";
-      }
-    ];
+    #   # Disable conflicting defaults for ctrl+o
+    #   {
+    #     key = "ctrl+o";
+    #     command = "-workbench.action.files.openFile";
+    #     when = "true";
+    #   }
+    #   {
+    #     key = "ctrl+o";
+    #     command = "-workbench.action.files.openFolderViaWorkspace";
+    #     when = "!openFolderWorkspaceSupport && workbenchState == 'workspace'";
+    #   }
+    #   {
+    #     key = "ctrl+o";
+    #     command = "-workbench.action.files.openFileFolder";
+    #     when = "isMacNative && openFolderWorkspaceSupport";
+    #   }
+    #   {
+    #     key = "ctrl+o";
+    #     command = "-extension.vim_ctrl+o";
+    #     when = "editorTextFocus && vim.active && vim.use<C-o> && !inDebugRepl";
+    #   }
+    # ];
   };
 }
