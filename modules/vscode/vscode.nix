@@ -251,61 +251,26 @@
         when = "editorFocus";
       }
 
-      # Resize sidebar and panels (Ctrl+Arrow) - Directional
-      # Sidebar (left): Right arrow increases, Left arrow decreases
+      # Resize sidebar and panels (Ctrl+= to increase, Ctrl+- to decrease)
       {
-        key = "ctrl+right";
+        key = "ctrl+=";
         command = "workbench.action.increaseViewSize";
-        when = "sideBarFocus";
+        when = "sideBarFocus || panelFocus || auxiliaryBarFocus";
       }
       {
-        key = "ctrl+left";
+        key = "ctrl+-";
         command = "workbench.action.decreaseViewSize";
-        when = "sideBarFocus";
-      }
-      # Panel (bottom): Down arrow increases, Up arrow decreases
-      {
-        key = "ctrl+down";
-        command = "workbench.action.increaseViewSize";
-        when = "panelFocus";
-      }
-      {
-        key = "ctrl+up";
-        command = "workbench.action.decreaseViewSize";
-        when = "panelFocus";
-      }
-      # Auxiliary bar (right, e.g., Copilot): Left arrow increases, Right arrow decreases
-      {
-        key = "ctrl+left";
-        command = "workbench.action.increaseViewSize";
-        when = "auxiliaryBarFocus";
-      }
-      {
-        key = "ctrl+right";
-        command = "workbench.action.decreaseViewSize";
-        when = "auxiliaryBarFocus";
+        when = "sideBarFocus || panelFocus || auxiliaryBarFocus";
       }
 
-      # Disable default Ctrl+Arrow behavior
+      # Text size adjustment (Ctrl+Shift++ to increase, Ctrl+Shift+_ to decrease)
       {
-        key = "ctrl+left";
-        command = "-cursorWordLeft";
-        when = "textInputFocus";
+        key = "ctrl+shift+=";
+        command = "editor.action.fontZoomIn";
       }
       {
-        key = "ctrl+right";
-        command = "-cursorWordRight";
-        when = "textInputFocus";
-      }
-      {
-        key = "ctrl+up";
-        command = "-scrollLineUp";
-        when = "textInputFocus";
-      }
-      {
-        key = "ctrl+down";
-        command = "-scrollLineDown";
-        when = "textInputFocus";
+        key = "ctrl+shift+-";
+        command = "editor.action.fontZoomOut";
       }
 
       # Tab navigation

@@ -41,10 +41,10 @@
       bindkey '^K' up-line-or-history
 
       # Accept autosuggestion with Ctrl+N
-      bindkey '^N' autosuggest-accept
+      bindkey '^N' end-of-line
 
       # Accept and execute autosuggestion with Ctrl+Enter
-      bindkey '^M' autosuggest-execute
+      bindkey '^M' accept-line
     '';
   };
 }
