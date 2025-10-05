@@ -154,6 +154,16 @@
         command = "workbench.action.focusActiveEditorGroup";
         when = "!editorTextFocus";
       }
+      {
+        key = "ctrl+l";
+        command = "workbench.action.focusActiveEditorGroup";
+        when = "sideBarFocus";
+      }
+      {
+        key = "ctrl+h";
+        command = "workbench.action.focusActiveEditorGroup";
+        when = "panelFocus || auxiliaryBarFocus";
+      }
 
       # Leader-based navigation (Space = leader, works from editor)
       {
