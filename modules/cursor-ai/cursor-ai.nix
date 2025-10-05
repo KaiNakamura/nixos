@@ -10,8 +10,9 @@ let
 in
 {
   # Install Cursor IDE (available as code-cursor in nixpkgs)
-  home.packages = with pkgs; [
-    code-cursor
+  # We only install the wrapper which provides the 'cursor' command
+  # The wrapper references code-cursor directly, so we don't need to add it to packages
+  home.packages = [
     cursorWrapper  # Wrapper that runs cursor in background
   ];
 
