@@ -16,32 +16,31 @@ in
     code-cursor
   ];
 
-  # Symlink VS Code extensions to Cursor's extension directory
-  # This allows Cursor to use all the same extensions as VS Code
-  home.file = extensionLinks;
-
   # Cursor uses similar config structure to VS Code
   # Settings are stored in ~/.config/Cursor/User/settings.json
   # Keybindings are in ~/.config/Cursor/User/keybindings.json
   
-  # Apply shared editor configuration with Cursor-specific overrides
-  home.file.".config/Cursor/User/settings.json".text = builtins.toJSON (
-    editorConfig.settings // {
-      # Cursor AI-specific settings
-      "cursor.ai.enabled" = true;
-      "cursor.chat.enabled" = true;
-      "cursor.cpp.disabledLanguages" = [];
-    }
-  );
-
-  home.file.".config/Cursor/User/keybindings.json".text = builtins.toJSON (
-    editorConfig.keybindings ++ [
-      # Cursor-specific: Space+O for AI chat
-      {
-        key = "space o";
-        command = "aichat.newchataction";
-        when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+  # Merge extension symlinks with config files
+  home.file = extensionLinks // {
+    # Apply shared editor configuration with Cursor-specific overrides
+    ".config/Cursor/User/settings.json".text = builtins.toJSON (
+      editorConfig.settings // {
+        # Cursor AI-specific settings
+        "cursor.ai.enabled" = true;
+        "cursor.chat.enabled" = true;
+        "cursor.cpp.disabledLanguages" = [];
       }
-    ]
-  );
+    );
+
+    ".config/Cursor/User/keybindings.json".text = builtins.toJSON (
+      editorConfig.keybindings ++ [
+        # Cursor-specific: Space+O for AI chat
+        {
+          key = "space o";
+          command = "aichat.newchataction";
+          when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+        }
+      ]
+    );
+  };
 }
