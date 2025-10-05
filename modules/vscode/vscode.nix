@@ -187,6 +187,21 @@
         command = "workbench.action.terminal.focus";
         when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
       }
+      {
+        key = "space q";
+        command = "workbench.action.toggleSidebarVisibility";
+        when = "!inputFocus && sideBarFocus";
+      }
+      {
+        key = "space q";
+        command = "workbench.action.closePanel";
+        when = "!inputFocus && panelFocus";
+      }
+      {
+        key = "space q";
+        command = "workbench.action.closeAuxiliaryBar";
+        when = "!inputFocus && auxiliaryBarFocus";
+      }
 
       # Tab navigation
       {
