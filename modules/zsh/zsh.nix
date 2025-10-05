@@ -40,8 +40,8 @@
       bindkey '^J' down-line-or-history
       bindkey '^K' up-line-or-history
 
-      # Accept autosuggestion with Alt+l
-      bindkey '^[l' autosuggest-accept
+      # Accept autosuggestion with Ctrl+N
+      bindkey '^N' autosuggest-accept
 
       # Accept and execute autosuggestion with Ctrl+Enter
       bindkey '^M' autosuggest-execute
