@@ -30,6 +30,7 @@
     gb = "git branch";
     gp = "git push";
     gpo = "git push origin";
+    gpu = "git pull origin";
     gc = "git checkout";
     gl = "git log";
   };
