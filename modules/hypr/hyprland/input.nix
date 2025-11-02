@@ -20,11 +20,6 @@
       inactive_timeout = 3;
     };
 
-    # Gestures
-    gestures = {
-      workspace_swipe = false;
-    };
-
     # Device-specific configuration
     device = {
       name = "logitech-m705";
