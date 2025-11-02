@@ -3,9 +3,9 @@
 {
   programs.git = {
     enable = true;
-    userName = "Kai Nakamura";
-    userEmail = "kaihnakamura@gmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "Kai Nakamura";
+      user.email = "kaihnakamura@gmail.com";
       init.defaultBranch = "main";
       core.excludesFile = "~/.gitignore_global";
       url."ssh://git@github.com".insteadOf = "https://github.com";
