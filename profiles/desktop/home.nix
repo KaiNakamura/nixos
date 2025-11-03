@@ -23,6 +23,7 @@
     ../../modules/lazydocker/lazydocker.nix
     ../../modules/k9s/k9s.nix
     ../../modules/python/python.nix
+    ../../modules/uv/uv.nix
 
     # Desktop
     ../../modules/hypr/hypr.nix
