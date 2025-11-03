@@ -10,13 +10,13 @@
 
   # Enable nix-ld for dynamically linked executables
   # This allows binaries (like numpy's C extensions) to find system libraries
-  programs.nix-ld.enable = true;
-  # Add libraries that pip-installed packages might need
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc
-    zlib
-    glibc
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      zlib
+    ];
+  };
 
   # Networking
   networking.networkmanager.enable = true;
