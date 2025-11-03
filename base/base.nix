@@ -8,6 +8,10 @@
   # Nix configuration
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable nix-ld for dynamically linked executables
+  # This allows binaries (like numpy's C extensions) to find system libraries
+  programs.nix-ld.enable = true;
+
   # Networking
   networking.networkmanager.enable = true;
 
