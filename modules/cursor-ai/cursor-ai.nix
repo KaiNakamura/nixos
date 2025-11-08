@@ -56,6 +56,11 @@ in
           key = "ctrl+l";
           command = "-aichat.newchataction";
         }
+        # Disable Alt+S menu command that conflicts with Ask mode
+        {
+          key = "alt+s";
+          command = "-workbench.action.showEditorMenu";
+        }
       ]
 
       # Add shared keybindings (includes all disables and active bindings)
@@ -81,49 +86,50 @@ in
         # Chat navigation - Move between chats
         {
           key = "alt+h";
-          command = "aichat.previousChat";
-          when = "aichatFocus && !aichatInputFocus";
+          command = "cursor.chat.previousChat";
+          when = "activeChatPanel || aichatFocus";
         }
         {
           key = "alt+l";
-          command = "aichat.nextChat";
-          when = "aichatFocus && !aichatInputFocus";
+          command = "cursor.chat.nextChat";
+          when = "activeChatPanel || aichatFocus";
         }
         
         # Chat management - Close current chat
         {
           key = "alt+q";
-          command = "aichat.closeChat";
-          when = "aichatFocus && !aichatInputFocus";
+          command = "cursor.chat.closeChat";
+          when = "activeChatPanel || aichatFocus";
         }
         
         # Mode switching - Agent/Ask/Plan modes
         {
           key = "alt+a";
-          command = "aichat.agentMode";
-          when = "aichatFocus && !aichatInputFocus";
+          command = "cursor.chat.agentMode";
+          when = "activeChatPanel || aichatFocus";
         }
         {
           key = "alt+s";
-          command = "aichat.askMode";
-          when = "aichatFocus && !aichatInputFocus";
+          command = "cursor.chat.askMode";
+          when = "activeChatPanel || aichatFocus";
         }
         {
           key = "alt+p";
-          command = "aichat.planMode";
-          when = "aichatFocus && !aichatInputFocus";
+          command = "cursor.chat.planMode";
+          when = "activeChatPanel || aichatFocus";
         }
         
         # Scrolling - Works in both chat panel and input
+        # These use standard VS Code scroll commands
         {
           key = "ctrl+u";
           command = "scrollPageUp";
-          when = "aichatFocus || aichatInputFocus";
+          when = "activeChatPanel || aichatFocus || aichatInputFocus";
         }
         {
           key = "ctrl+d";
           command = "scrollPageDown";
-          when = "aichatFocus || aichatInputFocus";
+          when = "activeChatPanel || aichatFocus || aichatInputFocus";
         }
       ]
     );
