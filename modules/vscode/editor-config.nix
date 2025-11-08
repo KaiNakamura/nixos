@@ -62,7 +62,9 @@
     "vim.useSystemClipboard" = true;
     "vim.vimrc.enable" = true;
     "vim.leader" = " ";
+    "vim.timeout" = 300;
     "vim.handleKeys" = {
+      "<space>" = false;
       "<C-d>" = true;
       "<C-s>" = false;
       "<C-z>" = false;
@@ -140,24 +142,14 @@
   };
 
   keybindings = [
-    # Return to Editor - Multiple Ways
+    # Return to Editor
     {
       key = "escape";
       command = "workbench.action.focusActiveEditorGroup";
-      when = "!editorTextFocus";
-    }
-    {
-      key = "ctrl+l";
-      command = "workbench.action.focusActiveEditorGroup";
-      when = "sideBarFocus";
-    }
-    {
-      key = "ctrl+h";
-      command = "workbench.action.focusActiveEditorGroup";
-      when = "panelFocus || auxiliaryBarFocus";
+      when = "!editorTextFocus || sideBarFocus || panelFocus || auxiliaryBarFocus";
     }
 
-    # Leader-based navigation (Space = leader)
+    # Leader-based panel navigation (Space = leader)
     {
       key = "space e";
       command = "workbench.view.explorer";
@@ -177,6 +169,19 @@
       key = "space s g";
       command = "workbench.action.findInFiles";
       when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+    }
+
+    # Disable VS Code's Ctrl+HJKL bindings that conflict with vim window navigation
+    # Vim will handle Ctrl+HJKL for window navigation when in editor
+    {
+      key = "ctrl+h";
+      command = "-workbench.action.focusActiveEditorGroup";
+      when = "panelFocus || auxiliaryBarFocus";
+    }
+    {
+      key = "ctrl+l";
+      command = "-workbench.action.focusActiveEditorGroup";
+      when = "sideBarFocus";
     }
 
     # Disable default Ctrl+W and Alt+Q behavior
