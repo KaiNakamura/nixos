@@ -142,6 +142,38 @@
   };
 
   keybindings = [
+    # Disable Ctrl+L bindings FIRST (before other bindings) to prevent conflicts
+    # These must come first as keybindings are processed in order
+    {
+      key = "ctrl+l";
+      command = "-workbench.action.toggleSidebarVisibility";
+    }
+    {
+      key = "ctrl+l";
+      command = "-workbench.action.toggleAuxiliaryBar";
+    }
+    {
+      key = "ctrl+l";
+      command = "-workbench.action.focusActiveEditorGroup";
+    }
+    {
+      key = "ctrl+l";
+      command = "-workbench.action.focusSideBar";
+    }
+    {
+      key = "ctrl+l";
+      command = "-workbench.action.focusAuxiliaryBar";
+    }
+    # Disable Ctrl+H bindings that conflict with vim window navigation
+    {
+      key = "ctrl+h";
+      command = "-workbench.action.focusActiveEditorGroup";
+    }
+    {
+      key = "ctrl+h";
+      command = "-workbench.action.focusPreviousGroup";
+    }
+
     # Return to Editor
     {
       key = "escape";
@@ -171,26 +203,6 @@
       when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
     }
 
-    # Disable VS Code's Ctrl+HJKL bindings that conflict with vim window navigation
-    # Vim will handle Ctrl+HJKL for window navigation when in editor
-    {
-      key = "ctrl+h";
-      command = "-workbench.action.focusActiveEditorGroup";
-      when = "panelFocus || auxiliaryBarFocus";
-    }
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.toggleSidebarVisibility";
-    }
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.toggleAuxiliaryBar";
-    }
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.focusActiveEditorGroup";
-      when = "sideBarFocus || auxiliaryBarFocus";
-    }
 
     # Disable default Ctrl+W and Alt+Q behavior
     {

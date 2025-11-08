@@ -36,15 +36,10 @@ in
     );
 
     ".config/Cursor/User/keybindings.json".text = builtins.toJSON (
-      editorConfig.keybindings ++ [
-        # Cursor-specific: Space+O for AI chat
-        {
-          key = "space o";
-          command = "aichat.newchataction";
-          when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
-        }
-        # Disable Cursor's default Ctrl+L for side panel toggle
-        # This conflicts with vim window navigation
+      # Put Cursor-specific disables FIRST, then add shared keybindings
+      # This ensures Cursor's defaults are disabled before other bindings are processed
+      [
+        # Disable ALL possible Ctrl+L commands that might focus/toggle AI panel
         {
           key = "ctrl+l";
           command = "-workbench.action.toggleSidebarVisibility";
@@ -53,11 +48,37 @@ in
           key = "ctrl+l";
           command = "-workbench.action.toggleAuxiliaryBar";
         }
-        # Also disable any other Ctrl+L bindings that might interfere
         {
           key = "ctrl+l";
           command = "-workbench.action.focusActiveEditorGroup";
-          when = "sideBarFocus || auxiliaryBarFocus";
+        }
+        {
+          key = "ctrl+l";
+          command = "-workbench.action.focusSideBar";
+        }
+        {
+          key = "ctrl+l";
+          command = "-workbench.action.focusAuxiliaryBar";
+        }
+        # Disable Cursor-specific AI chat commands bound to Ctrl+L
+        {
+          key = "ctrl+l";
+          command = "-aichat.focus";
+        }
+        {
+          key = "ctrl+l";
+          command = "-aichat.toggle";
+        }
+        {
+          key = "ctrl+l";
+          command = "-aichat.newchataction";
+        }
+      ] ++ editorConfig.keybindings ++ [
+        # Cursor-specific: Space+O for AI chat
+        {
+          key = "space o";
+          command = "aichat.newchataction";
+          when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
         }
       ]
     );
