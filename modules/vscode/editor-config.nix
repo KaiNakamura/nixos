@@ -64,11 +64,19 @@
     "vim.leader" = " ";
     "vim.timeout" = 300;
     "vim.handleKeys" = {
+      # Leader key
       "<space>" = false;
-      "<C-d>" = true;
+      
+      # Window navigation
+      "<C-h>" = false;
+      "<C-j>" = false;
+      "<C-k>" = false;
+      "<C-l>" = false;
+      "<C-w>" = false;
+      
+      # Terminal/System operations
       "<C-s>" = false;
       "<C-z>" = false;
-      "<C-w>" = false;
     };
     "vim.digraphs" = {};
 
@@ -142,69 +150,13 @@
   };
 
   keybindings = [
-    # Disable Ctrl+L bindings FIRST (before other bindings) to prevent conflicts
-    # These must come first as keybindings are processed in order
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.toggleSidebarVisibility";
-    }
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.toggleAuxiliaryBar";
-    }
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.focusActiveEditorGroup";
-    }
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.focusSideBar";
-    }
-    {
-      key = "ctrl+l";
-      command = "-workbench.action.focusAuxiliaryBar";
-    }
-    # Disable Ctrl+H bindings that conflict with vim window navigation
-    {
-      key = "ctrl+h";
-      command = "-workbench.action.focusActiveEditorGroup";
-    }
-    {
-      key = "ctrl+h";
-      command = "-workbench.action.focusPreviousGroup";
-    }
-
-    # Return to Editor
-    {
-      key = "escape";
-      command = "workbench.action.focusActiveEditorGroup";
-      when = "!editorTextFocus || sideBarFocus || panelFocus || auxiliaryBarFocus";
-    }
-
-    # Leader-based panel navigation (Space = leader)
-    {
-      key = "space e";
-      command = "workbench.view.explorer";
-      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
-    }
-    {
-      key = "space t";
-      command = "workbench.action.terminal.focus";
-      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
-    }
-    {
-      key = "space s f";
-      command = "workbench.action.quickOpen";
-      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
-    }
-    {
-      key = "space s g";
-      command = "workbench.action.findInFiles";
-      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
-    }
-
-
-    # Disable default Ctrl+W and Alt+Q behavior
+    # ============================================
+    # DISABLES - All Default Conflicts
+    # Must come first as keybindings are processed in order
+    # ============================================
+    
+    
+    # Ctrl+W disables
     {
       key = "ctrl+w";
       command = "-workbench.action.closeWindow";
@@ -225,10 +177,8 @@
       key = "ctrl+w";
       command = "-workbench.action.closeEditor";
     }
-    {
-      key = "alt+q";
-      command = "-workbench.action.closeWindow";
-    }
+    
+    # Ctrl+Q disables
     {
       key = "ctrl+q";
       command = "-workbench.action.quit";
@@ -237,102 +187,14 @@
       key = "ctrl+q";
       command = "-workbench.action.closeWindow";
     }
-
-    # Close/hide focused panel or sidebar (Ctrl+Q)
-    {
-      key = "ctrl+q";
-      command = "workbench.action.toggleSidebarVisibility";
-      when = "sideBarFocus";
-    }
-    {
-      key = "ctrl+q";
-      command = "workbench.action.closePanel";
-      when = "panelFocus";
-    }
-    {
-      key = "ctrl+q";
-      command = "workbench.action.closeAuxiliaryBar";
-      when = "auxiliaryBarFocus";
-    }
-    {
-      key = "ctrl+q";
-      command = "workbench.action.closeActiveEditor";
-      when = "editorFocus";
-    }
-
-    # Resize sidebar and panels
-    {
-      key = "ctrl+=";
-      command = "workbench.action.increaseViewSize";
-      when = "sideBarFocus || panelFocus || auxiliaryBarFocus";
-    }
-    {
-      key = "ctrl+-";
-      command = "workbench.action.decreaseViewSize";
-      when = "sideBarFocus || panelFocus || auxiliaryBarFocus";
-    }
-
-    # Text size adjustment
-    {
-      key = "ctrl+shift+=";
-      command = "editor.action.fontZoomIn";
-    }
-    {
-      key = "ctrl+shift+-";
-      command = "editor.action.fontZoomOut";
-    }
-
-    # Tab navigation
-    {
-      key = "alt+l";
-      command = "workbench.action.nextEditor";
-    }
-    {
-      key = "alt+h";
-      command = "workbench.action.previousEditor";
-    }
+    
+    # Alt+Q disables
     {
       key = "alt+q";
-      command = "workbench.action.closeActiveEditor";
+      command = "-workbench.action.closeWindow";
     }
-
-    # Split operations
-    {
-      key = "ctrl+i";
-      command = "workbench.action.splitEditorDown";
-      when = "editorFocus";
-    }
-    {
-      key = "ctrl+o";
-      command = "workbench.action.splitEditorRight";
-      when = "editorFocus";
-    }
-
-    # File operations
-    {
-      key = "ctrl+n";
-      command = "explorer.newFile";
-      when = "explorerViewletFocus";
-    }
-
-    # Explorer operations
-    {
-      key = "shift+w";
-      command = "list.collapseAll";
-      when = "explorerViewletFocus && filesExplorerFocus";
-    }
-    {
-      key = "d";
-      command = "deleteFile";
-      when = "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
-    }
-    {
-      key = "r";
-      command = "renameFile";
-      when = "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
-    }
-
-    # Disable conflicting defaults for alt+h/l
+    
+    # Alt+H/L disables
     {
       key = "alt+h";
       command = "-testing.toggleTestingPeekHistory";
@@ -348,8 +210,8 @@
       command = "-toggleFindInSelection";
       when = "editorFocus";
     }
-
-    # Disable conflicting defaults for ctrl+o and ctrl+i
+    
+    # Ctrl+O/I disables
     {
       key = "ctrl+o";
       command = "-workbench.action.files.openFile";
@@ -373,6 +235,149 @@
       key = "ctrl+i";
       command = "-extension.vim_ctrl+i";
       when = "editorTextFocus && vim.active && vim.use<C-i> && !inDebugRepl";
+    }
+
+    # ============================================
+    # GLOBAL NAVIGATION - Works from anywhere
+    # ============================================
+    
+    # Escape - Universal return to editor
+    {
+      key = "escape";
+      command = "workbench.action.focusActiveEditorGroup";
+      when = "!editorTextFocus || sideBarFocus || panelFocus || auxiliaryBarFocus";
+    }
+    
+    # Leader bindings (Space = leader) - Panel navigation
+    # Only active when not in insert mode or input fields
+    {
+      key = "space e";
+      command = "workbench.view.explorer";
+      when = "!inputFocus || (editorTextFocus && vim.active && vims.mode != 'Insert')";
+    }
+    {
+      key = "space t";
+      command = "workbench.action.terminal.focus";
+      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+    }
+    {
+      key = "space s f";
+      command = "workbench.action.quickOpen";
+      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+    }
+    {
+      key = "space s g";
+      command = "workbench.action.findInFiles";
+      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+    }
+    {
+      key = "space p";
+      command = "workbench.actions.view.problems";
+      when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+    }
+
+    # ============================================
+    # EDITOR CONTEXT - When editor is focused
+    # ============================================
+    
+    # Split operations - Create editor splits
+    {
+      key = "ctrl+i";
+      command = "workbench.action.splitEditorDown";
+      when = "editorFocus";
+    }
+    {
+      key = "ctrl+o";
+      command = "workbench.action.splitEditorRight";
+      when = "editorFocus";
+    }
+    
+    # Tab navigation - Switch between editor tabs
+    {
+      key = "alt+h";
+      command = "workbench.action.previousEditor";
+    }
+    {
+      key = "alt+l";
+      command = "workbench.action.nextEditor";
+    }
+    {
+      key = "alt+q";
+      command = "workbench.action.closeActiveEditor";
+    }
+    
+    # Font zoom - Adjust editor font size
+    {
+      key = "ctrl+shift+=";
+      command = "editor.action.fontZoomIn";
+    }
+    {
+      key = "ctrl+shift+-";
+      command = "editor.action.fontZoomOut";
+    }
+
+    # ============================================
+    # PANEL/SIDEBAR CONTEXT - When panels/sidebars are focused
+    # ============================================
+    
+    # Close operations - Context-dependent close (sidebar/panel/editor)
+    {
+      key = "ctrl+q";
+      command = "workbench.action.toggleSidebarVisibility";
+      when = "sideBarFocus";
+    }
+    {
+      key = "ctrl+q";
+      command = "workbench.action.closePanel";
+      when = "panelFocus";
+    }
+    {
+      key = "ctrl+q";
+      command = "workbench.action.closeAuxiliaryBar";
+      when = "auxiliaryBarFocus";
+    }
+    {
+      key = "ctrl+q";
+      command = "workbench.action.closeActiveEditor";
+      when = "editorFocus";
+    }
+    
+    # Resize operations - Adjust panel/sidebar size
+    {
+      key = "ctrl+=";
+      command = "workbench.action.increaseViewSize";
+      when = "sideBarFocus || panelFocus || auxiliaryBarFocus";
+    }
+    {
+      key = "ctrl+-";
+      command = "workbench.action.decreaseViewSize";
+      when = "sideBarFocus || panelFocus || auxiliaryBarFocus";
+    }
+
+    # ============================================
+    # EXPLORER CONTEXT - When file explorer is focused
+    # ============================================
+    
+    # File operations - Create, delete, rename files
+    {
+      key = "ctrl+n";
+      command = "explorer.newFile";
+      when = "explorerViewletFocus";
+    }
+    {
+      key = "shift+w";
+      command = "list.collapseAll";
+      when = "explorerViewletFocus && filesExplorerFocus";
+    }
+    {
+      key = "d";
+      command = "deleteFile";
+      when = "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
+    }
+    {
+      key = "r";
+      command = "renameFile";
+      when = "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus";
     }
   ];
 }

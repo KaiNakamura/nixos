@@ -36,31 +36,14 @@ in
     );
 
     ".config/Cursor/User/keybindings.json".text = builtins.toJSON (
-      # Put Cursor-specific disables FIRST, then add shared keybindings
-      # This ensures Cursor's defaults are disabled before other bindings are processed
+      # ============================================
+      # CURSOR-SPECIFIC DISABLES - Must come first
+      # Additional disables beyond shared config
+      # ============================================
+      
+      # Cursor-specific AI chat commands bound to Ctrl+L
+      # These must be disabled before shared keybindings are processed
       [
-        # Disable ALL possible Ctrl+L commands that might focus/toggle AI panel
-        {
-          key = "ctrl+l";
-          command = "-workbench.action.toggleSidebarVisibility";
-        }
-        {
-          key = "ctrl+l";
-          command = "-workbench.action.toggleAuxiliaryBar";
-        }
-        {
-          key = "ctrl+l";
-          command = "-workbench.action.focusActiveEditorGroup";
-        }
-        {
-          key = "ctrl+l";
-          command = "-workbench.action.focusSideBar";
-        }
-        {
-          key = "ctrl+l";
-          command = "-workbench.action.focusAuxiliaryBar";
-        }
-        # Disable Cursor-specific AI chat commands bound to Ctrl+L
         {
           key = "ctrl+l";
           command = "-aichat.focus";
@@ -73,8 +56,16 @@ in
           key = "ctrl+l";
           command = "-aichat.newchataction";
         }
-      ] ++ editorConfig.keybindings ++ [
-        # Cursor-specific: Space+O for AI chat
+      ]
+
+      # Add shared keybindings (includes all disables and active bindings)
+      ++ editorConfig.keybindings
+
+      # ============================================
+      # CURSOR-SPECIFIC ADDITIONS
+      # ============================================
+      ++ [
+        # AI Chat - Leader binding for Cursor AI chat panel
         {
           key = "space o";
           command = "aichat.newchataction";
