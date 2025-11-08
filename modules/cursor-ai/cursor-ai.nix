@@ -43,6 +43,22 @@ in
           command = "aichat.newchataction";
           when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
         }
+        # Disable Cursor's default Ctrl+L for side panel toggle
+        # This conflicts with vim window navigation
+        {
+          key = "ctrl+l";
+          command = "-workbench.action.toggleSidebarVisibility";
+        }
+        {
+          key = "ctrl+l";
+          command = "-workbench.action.toggleAuxiliaryBar";
+        }
+        # Also disable any other Ctrl+L bindings that might interfere
+        {
+          key = "ctrl+l";
+          command = "-workbench.action.focusActiveEditorGroup";
+          when = "sideBarFocus || auxiliaryBarFocus";
+        }
       ]
     );
   };

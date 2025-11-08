@@ -180,8 +180,16 @@
     }
     {
       key = "ctrl+l";
+      command = "-workbench.action.toggleSidebarVisibility";
+    }
+    {
+      key = "ctrl+l";
+      command = "-workbench.action.toggleAuxiliaryBar";
+    }
+    {
+      key = "ctrl+l";
       command = "-workbench.action.focusActiveEditorGroup";
-      when = "sideBarFocus";
+      when = "sideBarFocus || auxiliaryBarFocus";
     }
 
     # Disable default Ctrl+W and Alt+Q behavior
