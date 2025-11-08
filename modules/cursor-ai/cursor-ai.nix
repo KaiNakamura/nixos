@@ -65,11 +65,65 @@ in
       # CURSOR-SPECIFIC ADDITIONS
       # ============================================
       ++ [
-        # AI Chat - Leader binding for Cursor AI chat panel
+        # AI Chat - Focus/Open chat panel
         {
           key = "space o";
           command = "aichat.newchataction";
           when = "!inputFocus || (editorTextFocus && vim.active && vim.mode != 'Insert')";
+        }
+        
+        # ============================================
+        # CURSOR AI CHAT - Chat Panel Navigation
+        # These only work when chat panel is focused (not in editor)
+        # Note: Command IDs may need verification in Cursor's command palette
+        # ============================================
+        
+        # Chat navigation - Move between chats
+        {
+          key = "alt+h";
+          command = "aichat.previousChat";
+          when = "aichatFocus && !aichatInputFocus";
+        }
+        {
+          key = "alt+l";
+          command = "aichat.nextChat";
+          when = "aichatFocus && !aichatInputFocus";
+        }
+        
+        # Chat management - Close current chat
+        {
+          key = "alt+q";
+          command = "aichat.closeChat";
+          when = "aichatFocus && !aichatInputFocus";
+        }
+        
+        # Mode switching - Agent/Ask/Plan modes
+        {
+          key = "alt+a";
+          command = "aichat.agentMode";
+          when = "aichatFocus && !aichatInputFocus";
+        }
+        {
+          key = "alt+s";
+          command = "aichat.askMode";
+          when = "aichatFocus && !aichatInputFocus";
+        }
+        {
+          key = "alt+p";
+          command = "aichat.planMode";
+          when = "aichatFocus && !aichatInputFocus";
+        }
+        
+        # Scrolling - Works in both chat panel and input
+        {
+          key = "ctrl+u";
+          command = "scrollPageUp";
+          when = "aichatFocus || aichatInputFocus";
+        }
+        {
+          key = "ctrl+d";
+          command = "scrollPageDown";
+          when = "aichatFocus || aichatInputFocus";
         }
       ]
     );
