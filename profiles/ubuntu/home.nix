@@ -21,14 +21,8 @@
     ../../modules/tldr/tldr.nix
     ../../modules/delta/delta.nix
 
-    # Terminal
-    ../../modules/kitty/kitty.nix
-
-    # Applications
-    ../../modules/vscode/vscode.nix
-
-    # TODO: Add GNOME module when created
-    # ../../modules/gnome/gnome.nix
+    # Desktop
+    ../../modules/gnome/gnome.nix
   ];
 
   home.username = "kai";
