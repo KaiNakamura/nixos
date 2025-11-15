@@ -38,8 +38,22 @@ in
   # Configure GNOME keybinds via dconf/gsettings
   # This mirrors the Hyprland keybinds from modules/hypr/hyprland/keybinds.nix
   dconf.settings = {
-    # Window management - match Hyprland
+    # Disable conflicting default GNOME keybinds first
     "org/gnome/desktop/wm/keybindings" = {
+      # Disable default Super key shortcuts that conflict
+      panel-main-menu = [];  # Default: Super (conflicts with our shortcuts)
+      switch-applications = [];  # Default: Alt+Tab (but might have Super variants)
+      switch-applications-backward = [];  # Default: Shift+Alt+Tab
+      switch-group = [];  # Default: Alt+` (but might conflict)
+      switch-group-backward = [];  # Default: Shift+Alt+`
+      switch-input-source = [];  # Default: Super+Space (we use this for menu)
+      switch-input-source-backward = [];  # Default: Shift+Super+Space
+      
+      # Disable window tiling shortcuts that might conflict with hjkl
+      toggle-tiled-left = [];  # Default: Super+Left
+      toggle-tiled-right = [];  # Default: Super+Right
+      
+      # Window management - match Hyprland
       close = ["<Super>q"];  # Match Hyprland: Super+q to close
       maximize = ["<Super>Up"];
       minimize = ["<Super>Down"];
@@ -180,10 +194,32 @@ in
     };
   };
 
-  # Disable conflicting default keybindings
-  # Disable Dash to Dock hotkeys (like Omakub does)
-  dconf.settings."org/gnome/shell/extensions/dash-to-dock" = {
-    hot-keys = false;
+    # Disable conflicting GNOME Shell keybinds
+    "org/gnome/shell/keybindings" = {
+      # Disable default Super key shortcuts
+      toggle-application-view = [];  # Default: Super (conflicts with our shortcuts)
+      toggle-message-tray = [];  # Default: Super+m (conflicts with our fullscreen)
+      toggle-overview = [];  # Default: Super+s (might conflict)
+      focus-active-notification = [];  # Default: Super+n (conflicts with terminal)
+      open-application-menu = [];  # Default: Super+Space (we use for menu)
+      
+      # Disable application switching shortcuts if they use Super+1-9
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+      switch-to-application-5 = [];
+      switch-to-application-6 = [];
+      switch-to-application-7 = [];
+      switch-to-application-8 = [];
+      switch-to-application-9 = [];
+    };
+
+    # Disable conflicting default keybindings
+    # Disable Dash to Dock hotkeys (like Omakub does)
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      hot-keys = false;
+    };
   };
 }
 
