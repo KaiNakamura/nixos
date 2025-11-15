@@ -192,7 +192,6 @@ in
       command = "wofi --show drun";
       binding = "<Super>r";
     };
-  };
 
     # Disable conflicting GNOME Shell keybinds
     "org/gnome/shell/keybindings" = {
