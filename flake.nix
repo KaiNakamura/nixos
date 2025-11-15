@@ -17,9 +17,9 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      # Helper function to create host configurations
+      # Helper function to create NixOS system configurations
       mkHost = { hostname, profile, extraModules ? [], extraArgs ? {} }: nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; } // extraArgs;
         modules = [
@@ -30,6 +30,15 @@
             networking.hostName = hostname;
           }
         ] ++ extraModules;
+      };
+      
+      # Helper function to create standalone Home Manager configurations
+      mkHomeConfig = { profile, system ? "x86_64-linux" }: home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { inherit system; };
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./profiles/${profile}/home.nix
+        ];
       };
     in
     {
@@ -49,6 +58,12 @@
           hostname = "homelab-01"; 
           profile = "homelab"; 
           extraModules = [{ homelab.k3s.role = "agent"; }];
+        };
+      };
+      
+      homeConfigurations = {
+        ubuntu = mkHomeConfig { 
+          profile = "ubuntu"; 
         };
       };
     };
