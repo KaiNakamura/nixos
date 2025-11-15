@@ -51,6 +51,7 @@
     wget
     git
     home-manager
+    jq  # JSON processor for flake target detection
   ];
 
   # Shell configuration
