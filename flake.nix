@@ -34,7 +34,7 @@
       
       # Helper function to create standalone Home Manager configurations
       mkHomeConfig = { profile, system ? "x86_64-linux" }: home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./profiles/${profile}/home.nix
