@@ -22,6 +22,7 @@ in {
     set -e
     repo="${repoPath}"
     url="${repoUrl}"
+    git="${pkgs.git}/bin/git"
 
     if [ ! -d "$repo/.git" ]; then
       mkdir -p "$(dirname "$repo")"
