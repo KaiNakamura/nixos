@@ -100,8 +100,11 @@ in
     };
 
     # Custom keybindings for window movement and focus (hjkl style)
-    # Reserve slots for custom keybindings
+    # Disable screen lock (Super+L conflicts with our focus-right keybind)
     "org/gnome/settings-daemon/plugins/media-keys" = {
+      screensaver = [];  # Disable Super+L screen lock
+      
+      # Reserve slots for custom keybindings
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
